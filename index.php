@@ -36,8 +36,7 @@ $req = $bdd->query('SELECT ID, TitreChap, DatePublication, DAY(DatePublication) 
                     {
                     ?>
                         <div class="list-group">
-                                <a href=".php?id=<?= $data['id'] ?>">Commentaires</a>
-                                <a href="#" class="list-group-item list-group-item-action"><?php echo htmlspecialchars($donnees['TitreChap']) . ' - publié le ' . htmlspecialchars($donnees['jour']). ' / ' . htmlspecialchars($donnees['mois']). ' / ' . htmlspecialchars($donnees['annee']); ?></a>
+                                <a href="Chap.php?id=<?= $data['id'] ?>" class="list-group-item list-group-item-action"><?php echo htmlspecialchars($donnees['TitreChap']) . ' - publié le ' . htmlspecialchars($donnees['jour']). ' / ' . htmlspecialchars($donnees['mois']). ' / ' . htmlspecialchars($donnees['annee']); ?></a>
                         </div>
                     <?php
                     }
