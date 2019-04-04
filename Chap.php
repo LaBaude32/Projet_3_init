@@ -68,7 +68,7 @@ If (isset($_GET['id'])){
 
                     <p class="display-4">Commentaires :</p>
                     <button type="button" class="btn btn-primary"> Ajouter un commentaire</button>
-                    <form>
+                    <form method="post" action="add_comments.php?id=<?= $donnees['ID'] ?>">
                         <p>Ajouter un commentaire :</p>
                         <div class="form-group">
                             <input class="form-control form-control-lg" id="Pseudo" type="text" placeholder="Pseudo">
