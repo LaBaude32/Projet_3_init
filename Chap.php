@@ -51,26 +51,38 @@ If (isset($_GET['id'])){
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>Billet simple pour l'Alaska</h1>
-                    <?php 
-                    while ($donnees = $req->fetch()) { 
-                        if ($donnees['ID'] == $_GET['id']) { ?>
-                            <h2>Chapitre <?php echo htmlspecialchars($donnees['TitreChap']); ?></h2>
-                            <p>
-                                <?php echo htmlspecialchars($donnees['content']); ?>
-                            </p>
-                            <blockquote class="blockquote">
-                                <footer class="blockquote-footer">Publié le <?php echo htmlspecialchars($donnees['jour']). ' / ' . htmlspecialchars($donnees['mois']). ' / ' . htmlspecialchars($donnees['annee']); ?></footer>
-                            </blockquote>
+                    <div class="jumbotron">
+                        <h1>Billet simple pour l'Alaska</h1>
+                        <?php 
+                        while ($donnees = $req->fetch()) { 
+                            if ($donnees['ID'] == $_GET['id']) { ?>
+                                <h2>Chapitre <?php echo htmlspecialchars($donnees['TitreChap']); ?></h2>
+                    </div>
+                    <p>
+                        <?php echo htmlspecialchars($donnees['content']); ?>
+                    </p>
+                    <blockquote class="blockquote">
+                        <footer class="blockquote-footer font-italic">Publié le <?php echo htmlspecialchars($donnees['jour']). ' / ' . htmlspecialchars($donnees['mois']). ' / ' . htmlspecialchars($donnees['annee']); ?></footer>
+                    </blockquote>
                         <?php 
                         }
                     }
                     $req->closeCursor();
 
+                    echo "Les commentaires :";
+
                     //affichage des commentaires
-                    while ($donnees = $reqComments->fetch()) {
-                        echo $donnees['contenu_comment'] . ' - publié le ' .$donnees['DatePubliComment'] . ' - par ' .$donnees['Pseudo'] . '</br>';
-                        
+                    while ($donnees = $reqComments->fetch()) { ?>
+                        <div class="list-group">
+                            <div class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 text-right">
+                                    <small><?php echo $donnees['DatePubliComment'] ?></small>
+                                </div>
+                                <p class="mb-1"><?php echo $donnees['contenu_comment'] ?></p>
+                                <small><?php echo $donnees['Pseudo'] ?></small>
+                            </div>
+                        </div>
+                        <?php
                     }
                     $reqComments->closeCursor();
                     ?>
