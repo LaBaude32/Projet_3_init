@@ -28,15 +28,12 @@ If (isset($_GET['id'])){
         FROM post p
         INNER JOIN comments c
         ON c.postID = p.ID
-        WHERE p.ID = ?
+        WHERE p.ID = ? AND Report = 1
         ORDER BY c.DatePubliComment DESC');
     $reqComments->execute(array($_GET['id']));
     }
 
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html>
@@ -67,25 +64,40 @@ If (isset($_GET['id'])){
                         <?php 
                         }
                     }
-                    $req->closeCursor();
+                    $req->closeCursor(); ?>
 
-                    echo "Les commentaires :";
-
-                    //affichage des commentaires
-                    while ($donnees = $reqComments->fetch()) { ?>
-                        <div class="list-group">
-                            <div class="list-group-item list-group-item-action">
-                                <div class="d-flex w-100 text-right">
-                                    <small><?php echo $donnees['DatePubliComment'] ?></small>
-                                </div>
-                                <p class="mb-1"><?php echo $donnees['contenu_comment'] ?></p>
-                                <small><?php echo $donnees['Pseudo'] ?></small>
-                            </div>
+                    <p class="display-4">Commentaires :</p>
+                    <button type="button" class="btn btn-primary"> Ajouter un commentaire</button>
+                    <form>
+                        <p>Ajouter un commentaire :</p>
+                        <div class="form-group">
+                            <input class="form-control form-control-lg" id="Pseudo" type="text" placeholder="Pseudo">
+                        <div class="form-group">
                         </div>
+                            <label for="exampleFormControlTextarea1">Votre commentaire :</label>
+                            <textarea class="form-control" id="Comments_content" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                    </form>
+
+                    <div class="mt-5">
                         <?php
-                    }
-                    $reqComments->closeCursor();
-                    ?>
+                        //affichage des commentaires
+                        while ($donnees = $reqComments->fetch()) { ?>
+                            <div class="list-group">
+                                <div class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 text-right">
+                                        <small><?php echo $donnees['DatePubliComment'] ?></small>
+                                    </div>
+                                    <p class="mb-1"><?php echo $donnees['contenu_comment'] ?></p>
+                                    <small><?php echo $donnees['Pseudo'] ?></small>
+                                </div>
+                            </div>
+                            <?php
+                        }
+                        $reqComments->closeCursor();
+                        ?>
+                    </div>  
                 </div>
             </div>
         </div>
