@@ -46,4 +46,5 @@ $req = $bdd->query('SELECT ID, TitreChap, DatePublication, DAY(DatePublication) 
             </div>
         </div>
     </body>
+    <?php include("footer.php"); ?>
 </html>

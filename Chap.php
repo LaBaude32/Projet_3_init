@@ -103,4 +103,5 @@ If (isset($_GET['id'])){
             </div>
         </div>
     </body>
+    <?php include("footer.php"); ?>
 </html>
