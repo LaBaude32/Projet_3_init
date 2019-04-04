@@ -68,15 +68,16 @@ If (isset($_GET['id'])){
 
                     <p class="display-4">Commentaires :</p>
                     <button type="button" class="btn btn-primary"> Ajouter un commentaire</button>
-                    <form method="post" action="add_comments.php?id=<?= $donnees['ID'] ?>">
+                    <form method="post" action="add_comments.php">
                         <p>Ajouter un commentaire :</p>
                         <div class="form-group">
-                            <input class="form-control form-control-lg" id="Pseudo" type="text" placeholder="Pseudo">
+                            <input class="form-control form-control-lg" name="Pseudo" type="text" placeholder="Pseudo">
                         <div class="form-group">
                         </div>
                             <label for="exampleFormControlTextarea1">Votre commentaire :</label>
-                            <textarea class="form-control" id="Comments_content" rows="3"></textarea>
+                            <textarea class="form-control" name="Comments_content" rows="3"></textarea>
                         </div>
+                        <input type="hidden" name="PostID" value="<?= $ID ?>" />
                         <button type="submit" class="btn btn-primary">Envoyer</button>
                     </form>
 
