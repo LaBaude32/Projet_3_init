@@ -17,8 +17,27 @@ $req->execute(array(
 	'Content' => $_POST['Comments_content'],
 	'Report' => 0,
 	));
+}?>
 
-echo 'Le commentaire à été soumis !';
-}
-
-?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>Commentaire ajouté</title>
+	<link href="Style/style.css" rel="stylesheet" /> 
+    <link href="public/style/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="jumbotron">
+					<p class="display-4">Le commentaire à été soumis !</p>
+					<p class="lead">Merci !</p>
+					<a class="btn btn-primary" href="Chap.php?id=<?= $_POST['PostID'] ?>" role="button">Retouner au chapitre</a>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>
