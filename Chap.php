@@ -10,10 +10,10 @@ catch(Exception $e)
 {
         die('Erreur : '.$e->getMessage());
 }
-// Récupération de la db avec l'ID
+// Récupération de la db CHAP avec l'ID
 try
 {
-    $bdd = new PDO('mysql:host=localhost;dbname=projet3;charset=utf8', 'root', '');
+    $bdd = new PDO('mysql:host=localhost;dbname=projet3;charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 }
 catch(Exception $e)
 {
@@ -21,7 +21,22 @@ catch(Exception $e)
 }
 
 $req = $bdd->query('SELECT ID, TitreChap, DatePublication, content, DAY(DatePublication) AS jour, MONTH(DatePublication) AS mois, YEAR(DatePublication) AS annee FROM post ORDER BY DateCreation');
+
+If (isset($_GET['id'])){
+
+    $reqComments = $bdd->prepare('SELECT c.content contenu_comment, c.DatePubliComment DatePubliComment, c.Pseudo Pseudo
+        FROM post p
+        INNER JOIN comments c
+        ON c.postID = p.ID
+        WHERE p.ID = ?
+        ORDER BY c.DatePubliComment DESC');
+    $reqComments->execute(array($_GET['id']));
+    }
+
 ?>
+
+
+
 
 <!DOCTYPE html>
 <html>
@@ -51,6 +66,13 @@ $req = $bdd->query('SELECT ID, TitreChap, DatePublication, content, DAY(DatePubl
                         }
                     }
                     $req->closeCursor();
+
+                    //affichage des commentaires
+                    while ($donnees = $reqComments->fetch()) {
+                        echo $donnees['contenu_comment'] . ' - publié le ' .$donnees['DatePubliComment'] . ' - par ' .$donnees['Pseudo'] . '</br>';
+                        
+                    }
+                    $reqComments->closeCursor();
                     ?>
                 </div>
             </div>
