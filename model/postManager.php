@@ -3,7 +3,7 @@ function getPosts() {
 
 	try
 	{
-	    $bdd = new PDO('mysql:host=localhost;dbname=projet3;charset=utf8', 'root', '');
+	    $bdd = new PDO('mysql:host=localhost;dbname=projet3;charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 	}
 	catch(Exception $e)
 	{
@@ -19,4 +19,13 @@ function getPosts() {
 	return $posts;
 }
 
+function getChapter($ID){
+	// faire un requette préparée ici pour recuperer le chapitre
 
+	while($row = $req->fetch()){
+		$chapter[] = $row;
+	}
+
+	return $chapter;
+
+}
