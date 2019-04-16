@@ -1,8 +1,10 @@
 <?php ob_start(); ?>
 
 <div class="col-lg-12">
-    <h1>Billet simple pour l'Alaska</h1>
-    <h2> Par Jean Forteroche</h2>
+    <div class="jumbotron">
+        <h1>Billet simple pour l'Alaska</h1>
+        <h2> Par Jean Forteroche</h2>
+    </div>
     <p>Les chapitres de mon livre :</p>
     <div class="list-group">
     <?php foreach ($posts as $post):?>
