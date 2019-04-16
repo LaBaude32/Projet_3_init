@@ -1,24 +1,20 @@
+<?php ob_start(); ?>
 <div class="col-lg-12">
-    <div class="jumbotron">
-        <h1>Billet simple pour l'Alaska</h1>
-        <?php 
-        while ($donnees = $req->fetch()) { 
-            if ($donnees['ID'] == $_GET['id']) { ?>
-                <h2>Chapitre <?php echo htmlspecialchars($donnees['TitreChap']); ?></h2>
-    </div>
-    <p>
-        <?php echo htmlspecialchars($donnees['content']); ?>
-    </p>
-    <blockquote class="blockquote">
-        <footer class="blockquote-footer font-italic">Publié le <?php echo htmlspecialchars($donnees['jour']). ' / ' . htmlspecialchars($donnees['mois']). ' / ' . htmlspecialchars($donnees['annee']); ?></footer>
-    </blockquote>
-        <?php 
-        }
-    }
-    $req->closeCursor(); ?>
+    <?php foreach ($posts as $post):?>
+        <div class="jumbotron">
+            <h1>Billet simple pour l'Alaska</h1>
+            <h2>Chapitre <?= $post['TitreChap']; ?></h2>
+        </div>
+        <p> <?= $post['content']; ?> </p>
+        <blockquote class="blockquote">
+            <footer class="blockquote-footer font-italic">Publié le <?= $post['jour']. ' / ' . $post['mois']. ' / ' . $post['annee']; ?></footer>
+        </blockquote>
+    <?php endforeach;?>
+
+    <a class="btn btn-info" href="index.php" role="button">Retour au sommaire</a>    
 
     <p class="display-4">Commentaires :</p>
-    <button type="button" class="btn btn-primary"> Ajouter un commentaire</button>
+    <button type="button" class="btn btn-secondary"> Ajouter un commentaire</button>
     <form method="post" action="add_comments.php">
         <p>Ajouter un commentaire :</p>
         <div class="form-group">
@@ -29,25 +25,24 @@
             <textarea class="form-control" name="Comments_content" rows="3"></textarea>
         </div>
         <input type="hidden" name="PostID" value="<?= $ID ?>" />
-        <button type="submit" class="btn btn-primary">Envoyer</button>
+        <button type="submit" class="btn btn-secondary">Envoyer</button>
     </form>
 
     <div class="mt-5">
-        <?php
-        //affichage des commentaires
-        while ($donnees = $reqComments->fetch()) { ?>
-            <div class="list-group">
-                <div class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 text-right">
-                        <small><?php echo $donnees['DatePubliComment'] ?></small>
-                    </div>
-                    <p class="mb-1"><?php echo $donnees['contenu_comment'] ?></p>
-                    <small><?php echo $donnees['Pseudo'] ?></small>
+        <!-- affichage des commentaires -->
+        <div class="list-group">
+        <?php foreach ($comments as $comment):?>
+            <div class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 text-right">
+                    <small><?= $comment['DatePubliComment'] ?></small>
                 </div>
+                <p class="mb-1"><?= $comment['contenu_comment'] ?></p>
+                <small><?= $comment['Pseudo'] ?></small>
             </div>
-            <?php
-        }
-        $reqComments->closeCursor();
-        ?>
+        <?php endforeach; ?>
+        </div>
     </div>  
 </div>
+
+<?php $content = ob_get_clean(); ?>
+<?php include('gabarit.php'); ?>

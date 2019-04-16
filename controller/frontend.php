@@ -13,13 +13,8 @@ class Frontend {
 	    if (isset($_GET['id']) && $_GET['id'] > 0) {
 	        $ID = $_GET['id'];
 		    }
-		}
-		catch(Exception $e)
-		{
-		        die('Erreur : '.$e->getMessage());
-		}
-
-		$chapter = getChapter($ID);
+		$posts = getPost($ID);
+		$comments = getComments($ID);
 		include('view/chapter.php');
     }
 }

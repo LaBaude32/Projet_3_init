@@ -6,7 +6,7 @@
     <p>Les chapitres de mon livre :</p>
     <div class="list-group">
     <?php foreach ($posts as $post):?>
-        <a href="Chap.php?id=<?= $post['ID'] ?>" class="list-group-item list-group-item-action">
+        <a href="index.php?id=<?= $post['ID'];?>&amp;action=chapter" class="list-group-item list-group-item-action">
             <?= $post['TitreChap'] . ' - publié le ' . $post['jour']. ' / ' . $post['mois']. ' / ' . $post['annee']; ?>    
         </a> 
     <?php endforeach;?>
