@@ -24,7 +24,7 @@ class Frontend {
             $pseudo = $_POST['Pseudo'];
             $content = $_POST['Comments_content'];
             $postID = $_POST['PostID'];
-            addComment($pseudo, $content, $postID)
+            addComment($pseudo, $content, $postID);
             include('view/commentAdded.php');
         }
     }
