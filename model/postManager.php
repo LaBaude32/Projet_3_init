@@ -54,3 +54,14 @@ function getComments($ID){
 	return $comments;
 
 }
+
+function addComment($pseudo, $content, $postID){
+	$bdd = dbConnect();
+	$req = $bdd->prepare('INSERT INTO comments(PostID, Pseudo, Content, Report, DatePubliComment) VALUES(:PostID, :Pseudo, :Content, :Report, NOW())');
+	$req->execute(array(
+		'PostID' => $_POST['PostID'],
+		'Pseudo' => $_POST['Pseudo'],
+		'Content' => $_POST['Comments_content'],
+		'Report' => 0,
+		));
+}
