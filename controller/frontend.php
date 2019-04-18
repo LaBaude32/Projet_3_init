@@ -17,4 +17,15 @@ class Frontend {
 		$comments = getComments($ID);
 		include('view/chapter.php');
     }
+
+    public function actionCommentAdded()
+    {
+        if (isset($_POST['PostID']) && $_POST['PostID'] > 0 && isset($_POST['Pseudo']) && isset($_POST['Comments_content'])){
+            $pseudo = $_POST['Pseudo'];
+            $content = $_POST['Comments_content'];
+            $postID = $_POST['PostID'];
+            addComment($pseudo, $content, $postID)
+            include('view/commentAdded.php');
+        }
+    }
 }
