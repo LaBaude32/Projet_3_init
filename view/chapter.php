@@ -15,7 +15,7 @@
 
     <p class="display-4">Commentaires :</p>
     <button type="button" class="btn btn-secondary"> Ajouter un commentaire</button>
-    <form method="post" action="add_comments.php">
+    <form method="post" action="index.php?action=commentAdded">
         <p>Ajouter un commentaire :</p>
         <div class="form-group">
             <input class="form-control form-control-lg" name="Pseudo" type="text" placeholder="Pseudo">
