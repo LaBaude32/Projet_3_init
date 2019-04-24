@@ -15,7 +15,7 @@ class Post
      */
     public function getId()
     {
-        return $this->id
+        return htmlspecialchars($this->id);
     }
 
     /**
@@ -23,7 +23,7 @@ class Post
      */
     public function getIdAutor()
     {
-        return $this->idAutor
+        return htmlspecialchars($this->idAutor);
     }
 
 
@@ -32,7 +32,7 @@ class Post
      */
     public function setIdAutor($idAutor)
     {
-       $this->idAutor = $idAutor
+       $this->idAutor = $idAutor;
     }
 
     /**
@@ -40,7 +40,7 @@ class Post
      */
     public function getTitreChap()
     {
-        return $this->titreChap
+        return htmlspecialchars($this->titreChap);
     }
 
 
@@ -49,7 +49,7 @@ class Post
      */
     public function setTitreChap($titreChap)
     {
-       $this->titreChap = $titreChap
+       $this->titreChap = $titreChap;
     }
 
     /**
@@ -57,7 +57,7 @@ class Post
      */
     public function getContent()
     {
-        return $this->content
+        return htmlspecialchars($this->content);
     }
 
 
@@ -66,7 +66,7 @@ class Post
      */
     public function setContent($content)
     {
-       $this->content = $content
+       $this->content = $content;
     }
 
 
@@ -75,7 +75,7 @@ class Post
      */
     public function getDateCreation()
     {
-        return $this->dateCreation
+        return htmlspecialchars($this->dateCreation);
     }
 
 
@@ -84,7 +84,7 @@ class Post
      */
     public function setDateCreation($dateCreation)
     {
-       $this->dateCreation = $dateCreation
+       $this->dateCreation = $dateCreation;
     }
 
     /**
@@ -92,7 +92,7 @@ class Post
      */
     public function getDatePublication()
     {
-        return $this->datePublication
+        return htmlspecialchars($this->datePublication);
     }
 
 
@@ -101,7 +101,7 @@ class Post
      */
     public function setDatePublication($datePublication)
     {
-       $this->datePublication = $datePublication
+       $this->datePublication = $datePublication;
     }
 
 
@@ -110,7 +110,7 @@ class Post
      */
     public function getIsDraft()
     {
-        return $this->isDraft
+        return htmlspecialchars($this->isDraft);
     }
 
 
@@ -119,6 +119,6 @@ class Post
      */
     public function setIsDraft($isDraft)
     {
-       $this->isDraft = $isDraft
+       $this->isDraft = $isDraft;
     }
 }
