@@ -1,17 +1,34 @@
 <?php
+include_once('classBddManager.php')
 
-function dbConnect(){
-	try
+class PostManager extends BddManager
+{
+	public function findAll()
 	{
-	    $bdd = new PDO('mysql:host=localhost;dbname=projet3;charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+		$bdd = $this->bdd;
+
+		$query = 'SELECT * FROM post';
+
+		$req = $bdd->query($query);
+		$req->execute();
+		while ($row = $req->fetch(¨PDO::FETCH_ASSOC)) {
+			$post = new Post();
+
+			$post->setId($row['ID']);
+			$post->setIdAutor($row['Id_Autor']);
+			$post->setTitreChapt($row['TitreChapt']);
+			$post->setContent($row['Content']);
+			$post->setDateCreation($row['DateCreation']);
+			$post->setDatePublication($row['DatePublication']);
+			$post->setIsDraft($row['IsDraft']);
+
+			$posts[] = $post; //tableau d'objets
+
+		}
+
+		return $posts
 	}
-	catch(Exception $e)
-	{
-	        die('Erreur : '.$e->getMessage());
-	}
-	return $bdd;
 }
-
 
 function getPosts() {
 	$bdd = dbConnect();
@@ -26,7 +43,7 @@ function getPosts() {
 
 function getPost($ID) {
 	$bdd = dbConnect();
-	$req = $bdd->prepare('SELECT TitreChap, content, DatePublication, DAY(DatePublication) AS jour, MONTH(DatePublication) AS mois, YEAR(DatePublication) AS annee FROM post WHERE ID = ?');
+	$req = $bdd->prepare( 'SELECT TitreChap, content, DatePublication, DAY(DatePublication) AS jour, MONTH(DatePublication) AS mois, YEAR(DatePublication) AS annee FROM post WHERE ID = ?');
     $req->execute(array($_GET['id']));
 
 	while($row = $req->fetch()){
