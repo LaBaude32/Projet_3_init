@@ -1,5 +1,5 @@
 <?php
-include_once('classBddManager.php')
+include_once('classBddManager.php');
 
 class PostManager extends BddManager
 {
@@ -43,7 +43,7 @@ function getPosts() {
 
 function getPost($ID) {
 	$bdd = dbConnect();
-	$req = $bdd->prepare( 'SELECT TitreChap, content, DatePublication, DAY(DatePublication) AS jour, MONTH(DatePublication) AS mois, YEAR(DatePublication) AS annee FROM post WHERE ID = ?');
+	$req = $bdd->prepare('SELECT TitreChap, content, DatePublication, DAY(DatePublication) AS jour, MONTH(DatePublication) AS mois, YEAR(DatePublication) AS annee FROM post WHERE ID = ?');
     $req->execute(array($_GET['id']));
 
 	while($row = $req->fetch()){
