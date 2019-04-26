@@ -26,7 +26,7 @@ class PostManager extends BddManager
 
 		}
 
-		return $posts
+		return $posts;
 	}
 }
 
