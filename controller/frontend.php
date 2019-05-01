@@ -17,7 +17,8 @@ class Frontend {
         $PostManager = new PostManager();
         $posts = $PostManager->findAll();
 
-		//$comments = getComments($ID);
+        $CommentsManager = new CommentsManager();
+        $comments = $CommentsManager->returnComments($ID);
 		include('view/chapter.php');
     }
 
