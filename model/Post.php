@@ -3,12 +3,29 @@
 class Post
 {
     private $id;
-    private $idAutor;
-    private $titreChap;
+    private $autorId;
+    private $title;
     private $content;
-    private $dateCreation;
-    private $datePublication;
+    private $createdAt;
+    private $publishedAt;
     private $isDraft;
+
+
+    public function hydrate($datas) { // array('id' => 5, 'autor_id' => '6) // setAutor_id => setAutorId
+       foreach($datas as $field => $value) {
+
+           $elements = explode('_', $field); // array(0 => 'autor', 1 => 'id');
+
+           $method = "set";
+           foreach($elements as $e){
+            $method .= ucfirst($e);
+           }
+           if(method_exists($this, $method)) {
+               $this->$method($value);
+           }
+       }
+    }
+
 
     /**
      * @return mixed
@@ -30,35 +47,35 @@ class Post
     /**
      * @return mixed
      */
-    public function getIdAutor()
+    public function getAutorId()
     {
-        return htmlspecialchars($this->idAutor);
+        return htmlspecialchars($this->autorId);
     }
 
 
     /**
      * @param mixed $idAutor
      */
-    public function setIdAutor($idAutor)
+    public function setAutorId($autorId)
     {
-       $this->idAutor = $idAutor;
+       $this->autorId = $autorId;
     }
 
     /**
      * @return mixed
      */
-    public function getTitreChap()
+    public function getTitle()
     {
-        return htmlspecialchars($this->titreChap);
+        return htmlspecialchars($this->title);
     }
 
 
     /**
-     * @param mixed $titreChap
+     * @param mixed $Title
      */
-    public function setTitreChap($titreChap)
+    public function setTitle($title)
     {
-       $this->titreChap = $titreChap;
+       $this->title = $title;
     }
 
     /**
@@ -82,35 +99,35 @@ class Post
     /**
      * @return mixed
      */
-    public function getDateCreation()
+    public function getCreatedAt()
     {
-        return htmlspecialchars($this->dateCreation);
+        return htmlspecialchars($this->createdAt);
     }
 
 
     /**
-     * @param mixed $dateCreation
+     * @param mixed $createdAt
      */
-    public function setDateCreation($dateCreation)
+    public function setCreatedAt($createdAt)
     {
-       $this->dateCreation = $dateCreation;
+       $this->createdAt = $createdAt;
     }
 
     /**
      * @return mixed
      */
-    public function getDatePublication()
+    public function getPublishedAt()
     {
-        return htmlspecialchars($this->datePublication);
+        return $this->publishedAt;
     }
 
 
     /**
-     * @param mixed $datePublication
+     * @param mixed $publishedAt
      */
-    public function setDatePublication($datePublication)
+    public function setPublishedAt($publishedAt)
     {
-       $this->datePublication = $datePublication;
+       $this->publishedAt = new DateTime($publishedAt);
     }
 
 

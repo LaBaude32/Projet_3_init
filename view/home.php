@@ -8,9 +8,9 @@
     <p>Les chapitres de mon livre :</p>
     <div class="list-group">
     <?php foreach ($posts as $post):?>
-        <a href="index.php?id=<?= $post['ID'];?>&amp;action=chapter" class="list-group-item list-group-item-action">
-            <?= $post['TitreChap'] . ' - publié le ' . $post['jour']. ' / ' . $post['mois']. ' / ' . $post['annee']; ?>    
-        </a> 
+        <a href="index.php?id=<?= $post->getId();?>&amp;action=chapter" class="list-group-item list-group-item-action">
+            <?= $post->getTitle() . ' - publié le ' . $post->getPublishedAt()->format('d \/ m \/ Y'); ?>
+        </a>
     <?php endforeach;?>
     </div>
 </div>

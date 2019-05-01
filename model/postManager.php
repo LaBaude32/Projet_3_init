@@ -1,26 +1,20 @@
 <?php
 include_once('classBddManager.php');
+include_once('post.php');
 
 class PostManager extends BddManager
 {
 	public function findAll()
 	{
-		$bdd = $this->bdd;
+		$bdd = $this->getBdd();
 
 		$query = 'SELECT * FROM post';
 
 		$req = $bdd->query($query);
 		$req->execute();
-		while ($row = $req->fetch(¨PDO::FETCH_ASSOC)) {
+		while ($row = $req->fetch(PDO::FETCH_ASSOC)) {
 			$post = new Post();
-
-			$post->setId($row['ID']);
-			$post->setIdAutor($row['Id_Autor']);
-			$post->setTitreChapt($row['TitreChapt']);
-			$post->setContent($row['Content']);
-			$post->setDateCreation($row['DateCreation']);
-			$post->setDatePublication($row['DatePublication']);
-			$post->setIsDraft($row['IsDraft']);
+			$post->hydrate($row);
 
 			$posts[] = $post; //tableau d'objets
 
@@ -30,7 +24,7 @@ class PostManager extends BddManager
 	}
 }
 
-function getPosts() {
+/*function getPosts() {
 	$bdd = dbConnect();
 	$req = $bdd->query('SELECT ID, TitreChap, DatePublication, DAY(DatePublication) AS jour, MONTH(DatePublication) AS mois, YEAR(DatePublication) AS annee FROM post ORDER BY DateCreation');
 
@@ -39,7 +33,7 @@ function getPosts() {
 	}
 
 	return $posts;
-}
+}*/
 
 function getPost($ID) {
 	$bdd = dbConnect();
