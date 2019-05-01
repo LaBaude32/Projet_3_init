@@ -14,8 +14,10 @@ class Frontend {
 	    if (isset($_GET['id']) && $_GET['id'] > 0) {
 	        $ID = $_GET['id'];
 		    }
-		$posts = getPost($ID);
-		$comments = getComments($ID);
+        $PostManager = new PostManager();
+        $posts = $PostManager->findAll();
+
+		//$comments = getComments($ID);
 		include('view/chapter.php');
     }
 

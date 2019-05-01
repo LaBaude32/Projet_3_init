@@ -1,17 +1,15 @@
 <?php ob_start(); ?>
 <div class="col-lg-12">
-    <?php foreach ($posts as $post):?>
         <div class="jumbotron">
             <h1>Billet simple pour l'Alaska</h1>
-            <h2>Chapitre <?= $post['TitreChap']; ?></h2>
+            <h2>Chapitre <?= $posts[$ID]->getTitle(); ?></h2>
         </div>
-        <p> <?= $post['content']; ?> </p>
+        <p> <?= $posts[$ID]->getContent(); ?> </p>
         <blockquote class="blockquote">
-            <footer class="blockquote-footer font-italic">Publié le <?= $post['jour']. ' / ' . $post['mois']. ' / ' . $post['annee']; ?></footer>
+            <footer class="blockquote-footer font-italic">Publié le <?= $posts[$ID]->getPublishedAt()->format('d \/ m \/ Y'); ?></footer>
         </blockquote>
-    <?php endforeach;?>
 
-    <a class="btn btn-info" href="index.php" role="button">Retour au sommaire</a>    
+    <a class="btn btn-info" href="index.php" role="button">Retour au sommaire</a>
 
     <p class="display-4">Commentaires :</p>
     <button type="button" class="btn btn-secondary"> Ajouter un commentaire</button>
@@ -41,7 +39,7 @@
             </div>
         <?php endforeach; ?>
         </div>
-    </div>  
+    </div>
 </div>
 
 <?php $content = ob_get_clean(); ?>
