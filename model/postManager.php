@@ -57,15 +57,16 @@ class CommentsManager extends BddManager
 		}
 		return array_reverse($toReturn); //pour les mettre dans l'ordre décroissant
 	}
-}
 
-function addComment($pseudo, $content, $postID){
-	$bdd = dbConnect();
-	$req = $bdd->prepare('INSERT INTO comments(PostID, Pseudo, Content, Report, published_at) VALUES(:PostID, :Pseudo, :Content, :Report, NOW())');
+	public function addComment($pseudo, $content, $postID)
+	{
+	$bdd =$this->getBdd();
+	$req = $bdd->prepare('INSERT INTO comments(post_id, pseudo, content, report, published_at) VALUES(:PostId, :Pseudo, :Content, :Report, NOW())');
 	$req->execute(array(
-		'PostID' => $_POST['PostID'],
+		'PostId' => $_POST['PostID'],
 		'Pseudo' => $_POST['Pseudo'],
 		'Content' => $_POST['Comments_content'],
 		'Report' => 0,
 		));
+	}
 }

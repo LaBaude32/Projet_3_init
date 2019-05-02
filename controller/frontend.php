@@ -27,8 +27,9 @@ class Frontend {
         if (isset($_POST['PostID']) && $_POST['PostID'] > 0 && isset($_POST['Pseudo']) && isset($_POST['Comments_content'])){
             $pseudo = $_POST['Pseudo'];
             $content = $_POST['Comments_content'];
-            $postID = $_POST['PostID'];
-            addComment($pseudo, $content, $postID);
+            $postId = $_POST['PostID'];
+            $CommentsManager = new CommentsManager();
+            $comments = $CommentsManager->addComment($pseudo, $content, $postId);
             include('view/commentAdded.php');
         }
     }
