@@ -8,6 +8,9 @@ class Comment
     private $content;
     private $publishedAt;
     private $report;
+    private $chapTitle;
+
+    //private $post; UN OBJET POST
 
     public function hydrate($datas) { // array('id' => 5, 'autor_id' => '6) // setAutor_id => setAutorId
         foreach($datas as $field => $value) {
