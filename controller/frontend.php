@@ -1,5 +1,7 @@
 <?php
 require_once('model/postManager.php');
+require_once('model/commentsManager.php');
+require_once('model/backendManager.php');
 
 class Frontend {
     public function actionHome()
