@@ -3,7 +3,7 @@
     	<div class="row">
     		<div class="col-12">
     			<div class="jumbotron text-center">
-    				<a href="">Adminstration</a>		
+    				<a href="index.php?action=backend">Adminstration</a>
     			</div>
     		</div>
     	</div>
