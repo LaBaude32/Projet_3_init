@@ -1,4 +1,7 @@
 <?php
+include_once('classBddManager.php');
+include_once('commentsManager.php');
+include_once('postManager.php');
 class BackendManager extends BddManager
 	{
 		public function findDrafts()

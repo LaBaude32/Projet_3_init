@@ -3,7 +3,8 @@ require_once('model/postManager.php');
 require_once('model/commentsManager.php');
 require_once('model/backendManager.php');
 
-class Frontend {
+class Frontend
+{
     public function actionHome()
     {
         $PostManager = new PostManager();
@@ -36,17 +37,5 @@ class Frontend {
         }
     }
 
-    public function actionBackend()
-    {
-        $PostManager = new PostManager();
-        $posts = $PostManager->findAll();
 
-        $BackendManager = new BackendManager();
-        $comments = $BackendManager->returnCommentsToValidate();
-
-        $BackendManager = new BackendManager();
-        $drafts = $BackendManager->findDrafts();
-
-        include('view/backEnd.php');
-    }
 }

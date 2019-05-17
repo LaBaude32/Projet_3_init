@@ -1,4 +1,7 @@
 <?php
+include_once('classBddManager.php');
+include_once('comment.php');
+
 class CommentsManager extends BddManager
 {
 	public function findAll()
@@ -16,9 +19,9 @@ class CommentsManager extends BddManager
 
 		$req = $bdd->query($query);
 		$req->execute();
-		while ($row = $req->fetch(PDO::FETCH_ASSOC)) {¨
+		while ($row = $req->fetch(PDO::FETCH_ASSOC)) {
 
-// object POST
+			// object POST
 
 			$comment = new Comment();
 			$comment->hydrate($row);
