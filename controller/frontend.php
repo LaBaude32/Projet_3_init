@@ -1,7 +1,7 @@
 <?php
-require_once('model/postManager.php');
-require_once('model/commentsManager.php');
-require_once('model/backendManager.php');
+require_once('MODEL/postManager.php');
+require_once('MODEL/commentsManager.php');
+require_once('MODEL/backendManager.php');
 
 class Frontend
 {
@@ -9,7 +9,7 @@ class Frontend
     {
         $PostManager = new PostManager();
         $posts = $PostManager->findAll();
-        include('view/home.php');
+        include('VIEW/home.php');
     }
 
     public function actionChapter()
@@ -22,7 +22,7 @@ class Frontend
 
         $CommentsManager = new CommentsManager();
         $comments = $CommentsManager->returnComments($ID);
-		include('view/chapter.php');
+		include('VIEW/chapter.php');
     }
 
     public function actionCommentAdded()
@@ -33,7 +33,7 @@ class Frontend
             $postId = $_POST['PostID'];
             $CommentsManager = new CommentsManager();
             $comments = $CommentsManager->addComment($pseudo, $content, $postId);
-            include('view/commentAdded.php');
+            include('VIEW/commentAdded.php');
         }
     }
 
