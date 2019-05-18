@@ -21,4 +21,19 @@ class Backend
 
         include('VIEW/backend/backend.php');
     }
+
+    public function actionValidateComment()
+    {
+
+        if (isset($_GET['id']) && $_GET['id'] > 0){
+            $CommentsManager = new CommentsManager();
+            $comments = $CommentsManager->validateComment($_GET['id']);
+
+            $Backend =new Backend();
+            $Backend->actionBackend();
+        }
+
+    }
+
+
 }

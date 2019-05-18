@@ -17,7 +17,7 @@
                     <div class="d-flex w-100 justify-content-between mt-3">
                         <p class="mb-1"><?= $comment->getContent(); ?></p>
                         <div>
-                            <div class="justify-content-end btn btn-primary">Valider</div>
+                            <a href="index.php?id=<?= $comment->getId();?>&amp;action=validateComment" class="justify-content-end btn btn-primary">Valider</a>
                             <div class="justify-content-end btn btn-primary">Supprimer</div>
                         </div>
                     </div>
@@ -28,7 +28,7 @@
     <h3 class="p-5">Brouillons des chapitres en cours :</h3>
     <div class="list-group">
         <?php foreach ($drafts as $draft):?>
-            <a href="index.php?id=<?= $draft->getId();?>&amp;action=chapter" class="list-group-item list-group-item-action">
+            <a href="chapter" class="list-group-item list-group-item-action">
                 <?= $draft->getTitle() . ' - publié le ' . $draft->getPublishedAt()->format('d \/ m \/ Y'); ?>
             </a>
         <?php endforeach;?>

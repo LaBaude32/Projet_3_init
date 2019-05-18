@@ -75,4 +75,16 @@ class CommentsManager extends BddManager
 
 		$req->execute();
 	}
+
+	public function validateComment($id)
+	{
+		$id = (int)$id;
+		//var_dump($id); die;
+		$bdd =$this->getBdd();
+		$req = $bdd->prepare('UPDATE comments SET report = :report WHERE id= :id');
+		$req->bindValue('report', 1, PDO::PARAM_INT);
+		$req->bindValue('id', $id, PDO::PARAM_INT);
+
+		$req->execute();
+	}
 }
