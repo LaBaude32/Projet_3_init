@@ -3,6 +3,11 @@ include_once('MODEL/backendManager.php');
 
 class Backend
 {
+    public function actionLogin()
+    {
+        //include('');
+    }
+
     public function actionBackend()
     {
         $PostManager = new PostManager();

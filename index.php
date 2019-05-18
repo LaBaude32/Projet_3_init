@@ -11,7 +11,7 @@ $routes = array(
 					'home' => array('controller' => 'frontend', 'method' => 'actionHome'),
 					'chapter' => array('controller' => 'frontend', 'method' => 'actionChapter'),
 					'addComment' => array('controller' => 'frontend', 'method' => 'actionCommentAdded'),
-					//'admin' => array('controller' => 'backend', 'method' => 'login'),
+					//'admin' => array('controller' => 'backend', 'method' => 'actionLogin'),
 					'admin' => array('controller' => 'backend', 'method' => 'actionBackend'),
 );
 
