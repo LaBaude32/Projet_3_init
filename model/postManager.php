@@ -20,7 +20,7 @@ class PostManager extends BddManager
 			$posts[] = $post; //tableau d'objets
 
 		}
-		//echo "<pre>"; var_dump($posts[0]); die;
+		//echo "<pre>"; var_dump($posts); die;
 		return $posts;
 	}
 }

@@ -1,4 +1,5 @@
 <?php ob_start(); ?>
+<?php $ID-- ?> <!-- à regler !!! -->
 <div class="col-lg-12">
         <div class="jumbotron">
             <h1>Billet simple pour l'Alaska</h1>
@@ -6,7 +7,7 @@
         </div>
         <p> <?= $posts[$ID]->getContent(); ?> </p>
         <blockquote class="blockquote">
-            <footer class="blockquote-footer font-italic">PubliÃ© le <?= $posts[$ID]->getPublishedAt()->format('d \/ m \/ Y'); ?></footer>
+            <footer class="blockquote-footer font-italic">Publié le <?= $posts[$ID]->getPublishedAt()->format('d \/ m \/ Y'); ?></footer>
         </blockquote>
 
     <a class="btn btn-info" href="index.php" role="button">Retour au sommaire</a>

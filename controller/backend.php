@@ -1,5 +1,5 @@
 <?php
-include_once('MODEL/backendManager.php');
+include_once(MODEL.'backendManager.php');
 
 class Backend
 {
@@ -19,7 +19,7 @@ class Backend
         $BackendManager = new BackendManager();
         $drafts = $BackendManager->findDrafts();
 
-        include('VIEW/backend/backend.php');
+        include(VIEW.'backend/backend.php');
     }
 
     public function actionValidateComment()

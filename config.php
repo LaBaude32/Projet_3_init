@@ -6,6 +6,7 @@ define('ROOT',$_SERVER['DOCUMENT_ROOT'].'/'.$folder.'/');
 define('VIEW', ROOT.'view/');
 define('CONTROLLER', ROOT.'controller/');
 define('MODEL', ROOT.'model/');
+define('PUBLIC', ROOT.'public/');
 
 //faire une session start
 

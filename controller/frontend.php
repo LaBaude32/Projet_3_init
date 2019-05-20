@@ -1,7 +1,6 @@
 <?php
-require_once('MODEL/postManager.php');
-require_once('MODEL/commentsManager.php');
-require_once('MODEL/backendManager.php');
+require_once(MODEL.'postManager.php');
+require_once(MODEL.'commentsManager.php');
 
 class Frontend
 {
@@ -9,12 +8,12 @@ class Frontend
     {
         $PostManager = new PostManager();
         $posts = $PostManager->findAll();
-        include('VIEW/home.php');
+        include(VIEW.'home.php');
     }
 
     public function actionChapter()
     {
-	    if (isset($_GET['id']) && $_GET['id'] > 0) {
+	    if (isset($_GET['id']) && $_GET['id'] >= 0) {
 	        $ID = $_GET['id'];
 		    }
         $PostManager = new PostManager();
@@ -22,7 +21,7 @@ class Frontend
 
         $CommentsManager = new CommentsManager();
         $comments = $CommentsManager->returnComments($ID);
-		include('VIEW/chapter.php');
+		include(VIEW.'chapter.php');
     }
 
     public function actionCommentAdded()
@@ -33,7 +32,7 @@ class Frontend
             $postId = $_POST['PostID'];
             $CommentsManager = new CommentsManager();
             $comments = $CommentsManager->addComment($pseudo, $content, $postId);
-            include('VIEW/commentAdded.php');
+            include(VIEW.'commentAdded.php');
         }
     }
 
