@@ -18,8 +18,8 @@ $routes = array(
 					'deleteComment' => array('controller' => 'backend', 'method' => 'actionDeleteComment'),
 					'editChapter' => array('controller' => 'backend', 'method' => 'actionEditChapter'),
 					'publishChapter' => array('controller' => 'backend', 'method' => 'actionPublishChapter'),
-);
-
+					'saveDraft' => array('controller' => 'backend', 'method' => 'actionSaveDraft'),
+				);
 
 //echo '<pre>'; var_dump('controller/'.$routes[$action]['controller'].'.php'); die;
 if(key_exists($action, $routes)) {

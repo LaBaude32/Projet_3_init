@@ -51,7 +51,6 @@ class PostManager extends BddManager
 			$post->hydrate($row);
 
 			$posts[] = $post; //tableau d'objets
-
 		}
 		//echo "<pre>"; var_dump($posts); die;
 		return $posts;
@@ -65,6 +64,18 @@ class PostManager extends BddManager
 		$req = $bdd->prepare('UPDATE post SET is_draft = :isDraft WHERE id= :id');
 		$req->bindValue('isDraft', 0, PDO::PARAM_INT);
 		$req->bindValue('id', $id, PDO::PARAM_INT);
+
+		$req->execute();
+	}
+
+	public function saveDraft($id, $content)
+	{
+		$id = (int)$id;
+		//var_dump($id); die;
+		$bdd =$this->getBdd();
+		$req = $bdd->prepare('UPDATE post SET content = :content, saved_at = NOW() WHERE id= :id');
+		$req->bindValue('content', $content, PDO::PARAM_STR);
+		$req->bindValue('id', $id, PDO::PARAM_STR);
 
 		$req->execute();
 	}

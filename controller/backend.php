@@ -60,13 +60,27 @@ class Backend
     }
 
     public function actionPublishChapter()
-        {
-            if (isset($_GET['id']) && $_GET['id'] > 0){
-                $PostManager = new PostManager();
-                $PostManager->publishChapter($_GET['id']);
+    {
+        if (isset($_GET['id']) && $_GET['id'] > 0){
+            $PostManager = new PostManager();
+            $PostManager->publishChapter($_GET['id']);
 
-                $Frontend = new Frontend();
-                $Frontend->actionChapter();
-            }
+            $Frontend = new Frontend();
+            $Frontend->actionChapter();
         }
+    }
+
+    public function actionSaveDraft()
+    {
+        if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_POST['postContent'])){
+
+           // var_dump($_POST['postContent']); die;
+            $PostManager = new PostManager();
+            $PostManager->saveDraft($_GET['id'], $_POST['postContent']);
+
+            $Backend = new Backend();
+            $Backend->actionEditChapter();
+
+        }
+    }
 }

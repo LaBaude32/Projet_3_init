@@ -83,7 +83,7 @@ class Post
      */
     public function getContent()
     {
-        return htmlspecialchars($this->content);
+        return $this->content;
     }
 
 
