@@ -101,7 +101,7 @@ class Post
      */
     public function getCreatedAt()
     {
-        return htmlspecialchars($this->createdAt);
+        return $this->createdAt;
     }
 
 
@@ -110,7 +110,7 @@ class Post
      */
     public function setCreatedAt($createdAt)
     {
-       $this->createdAt = $createdAt;
+       $this->createdAt = new DateTime($createdAt);
     }
 
     /**
