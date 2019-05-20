@@ -56,4 +56,16 @@ class PostManager extends BddManager
 		//echo "<pre>"; var_dump($posts); die;
 		return $posts;
 	}
+
+	public function publishChapter($id)
+	{
+		$id = (int)$id;
+		//var_dump($id); die;
+		$bdd =$this->getBdd();
+		$req = $bdd->prepare('UPDATE post SET is_draft = :isDraft WHERE id= :id');
+		$req->bindValue('isDraft', 0, PDO::PARAM_INT);
+		$req->bindValue('id', $id, PDO::PARAM_INT);
+
+		$req->execute();
+	}
 }

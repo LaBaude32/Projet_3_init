@@ -17,6 +17,7 @@ $routes = array(
 					'validateComment' => array('controller' => 'backend', 'method' => 'actionValidateComment'),
 					'deleteComment' => array('controller' => 'backend', 'method' => 'actionDeleteComment'),
 					'editChapter' => array('controller' => 'backend', 'method' => 'actionEditChapter'),
+					'publishChapter' => array('controller' => 'backend', 'method' => 'actionPublishChapter'),
 );
 
 

@@ -10,6 +10,7 @@
         </blockquote>
 
     <a class="btn btn-info" href="index.php?action=admin" role="button">Retour a l'administration</a>
+    <a class="btn btn-warning" href="index.php?id=<?=$post->getId();?>&amp;action=publishChapter" role="button">Publier le chapitre</a>
 </div>
 
 <?php $content = ob_get_clean(); ?>

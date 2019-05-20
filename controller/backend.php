@@ -1,5 +1,6 @@
 <?php
 include_once(MODEL.'backendManager.php');
+include_once(CONTROLLER.'frontend.php');
 
 class Backend
 {
@@ -58,4 +59,14 @@ class Backend
         }
     }
 
+    public function actionPublishChapter()
+        {
+            if (isset($_GET['id']) && $_GET['id'] > 0){
+                $PostManager = new PostManager();
+                $PostManager->publishChapter($_GET['id']);
+
+                $Frontend = new Frontend();
+                $Frontend->actionChapter();
+            }
+        }
 }
