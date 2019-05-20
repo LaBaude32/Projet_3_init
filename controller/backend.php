@@ -35,5 +35,18 @@ class Backend
 
     }
 
+    public function actionDeleteComment()
+    {
+
+        if (isset($_GET['id']) && $_GET['id'] > 0){
+            $CommentsManager = new CommentsManager();
+            $comments = $CommentsManager->deleteComment($_GET['id']);
+
+            $Backend =new Backend();
+            $Backend->actionBackend();
+        }
+
+    }
+
 
 }

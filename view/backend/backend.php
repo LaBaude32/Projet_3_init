@@ -18,7 +18,7 @@
                         <p class="mb-1"><?= $comment->getContent(); ?></p>
                         <div>
                             <a href="index.php?id=<?= $comment->getId();?>&amp;action=validateComment" class="justify-content-end btn btn-primary">Valider</a>
-                            <div class="justify-content-end btn btn-primary">Supprimer</div>
+                            <a href="index.php?id=<?= $comment->getId();?>&amp;action=deleteComment" class="justify-content-end btn btn-primary">Supprimer</a>
                         </div>
                     </div>
             </div>

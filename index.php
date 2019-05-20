@@ -15,6 +15,7 @@ $routes = array(
 					//'admin' => array('controller' => 'backend', 'method' => 'actionLogin'),
 					'admin' => array('controller' => 'backend', 'method' => 'actionBackend'),
 					'validateComment' => array('controller' => 'backend', 'method' => 'actionValidateComment'),
+					'deleteComment' => array('controller' => 'backend', 'method' => 'actionDeleteComment'),
 );
 
 

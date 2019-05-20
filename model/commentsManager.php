@@ -87,4 +87,14 @@ class CommentsManager extends BddManager
 
 		$req->execute();
 	}
+
+	public function deleteComment($id)
+	{
+		$id = (int)$id;
+		$bdd =$this->getBdd();
+		$req = $bdd->prepare('DELETE FROM comments WHERE id= :id');
+		$req->bindValue('id', $id, PDO::PARAM_INT);
+
+		$req->execute();
+	}
 }
