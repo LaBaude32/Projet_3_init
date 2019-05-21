@@ -1,7 +1,4 @@
 <?php
-include_once('classBddManager.php');
-include_once('comment.php');
-
 class CommentsManager extends BddManager
 {
 	public function findAll()

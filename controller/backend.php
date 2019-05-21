@@ -1,7 +1,4 @@
 <?php
-include_once(MODEL.'backendManager.php');
-include_once(CONTROLLER.'frontend.php');
-
 class Backend
 {
     public function actionLogin()

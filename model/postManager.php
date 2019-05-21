@@ -1,7 +1,5 @@
 <?php
 include_once('classBddManager.php');
-include_once('post.php');
-include_once('comment.php');
 
 class PostManager extends BddManager
 {

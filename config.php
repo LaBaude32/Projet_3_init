@@ -1,12 +1,36 @@
 <?php
 //configuration de l'appli
 
-$folder = 'Projet_3_init';
-define('ROOT',$_SERVER['DOCUMENT_ROOT'].'/'.$folder.'/');
-define('VIEW', ROOT.'view/');
-define('CONTROLLER', ROOT.'controller/');
-define('MODEL', ROOT.'model/');
-define('PUBLIC', ROOT.'public/');
+class MyAutoload
+{
+    public static function start()
+    {
+
+        spl_autoload_register(array(__CLASS__, 'autoload'));
+
+        $folder = 'Projet_3_init';
+
+        define('ROOT',$_SERVER['DOCUMENT_ROOT'].'/'.$folder.'/');
+
+        define('VIEW', ROOT.'view/');
+        define('CONTROLLER', ROOT.'controller/');
+        define('MODEL', ROOT.'model/');
+        define('PUBLIC', ROOT.'public/');
+
+    }
+
+    public static function autoload($class)
+    {
+        if(file_exists(MODEL.$class.'.php')){
+            include_once(MODEL.$class.'.php');
+        }
+        elseif(file_exists(CONTROLLER.$class.'.php')){
+            include_once(CONTROLLER.$class.'.php');
+        }
+    }
+}
+
+
 
 //faire une session start
 

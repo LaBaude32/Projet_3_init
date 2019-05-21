@@ -1,7 +1,4 @@
 <?php
-include_once('classBddManager.php');
-include_once('commentsManager.php');
-include_once('postManager.php');
 class BackendManager extends BddManager
 	{
 	// pour afficher les commentaires à valider dans le back end

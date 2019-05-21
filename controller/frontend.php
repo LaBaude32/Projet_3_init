@@ -1,7 +1,4 @@
 <?php
-require_once(MODEL.'postManager.php');
-require_once(MODEL.'commentsManager.php');
-
 class Frontend
 {
     public function actionHome()
@@ -35,6 +32,5 @@ class Frontend
             include(VIEW.'commentAdded.php');
         }
     }
-
 
 }
