@@ -1,11 +1,6 @@
 <?php
 class Backend
 {
-    public function actionLogin()
-    {
-        //include('');
-    }
-
     public function actionBackend()
     {
         $PostManager = new PostManager();
@@ -64,6 +59,8 @@ class Backend
 
             $Frontend = new Frontend();
             $Frontend->actionChapter();
+
+            header('Location:index.php'); //location:ROOT
         }
     }
 

@@ -1,6 +1,4 @@
 <?php
-include_once('classBddManager.php');
-
 class PostManager extends BddManager
 {
 	public function findAll()
@@ -38,6 +36,7 @@ class PostManager extends BddManager
 
 	public function findDrafts()
 	{
+		$posts = array();
 		$bdd = $this->getBdd();
 
 		$query = 'SELECT * FROM post WHERE is_draft=1';

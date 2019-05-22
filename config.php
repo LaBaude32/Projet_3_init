@@ -17,6 +17,14 @@ class MyAutoload
         define('MODEL', ROOT.'model/');
         define('PUBLIC', ROOT.'public/');
 
+        define('DBHOST', 'localhost');
+        define('DBNAME', 'projet3');
+        define('DBLOGIN', 'root');
+        define('DBPASSWORD', '');
+
+
+        session_start();
+
     }
 
     public static function autoload($class)

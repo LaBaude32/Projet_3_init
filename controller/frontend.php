@@ -33,4 +33,28 @@ class Frontend
         }
     }
 
+    public function actionConnection()
+    {
+        //include('');
+    }
+
+    public function actionLogin()
+    {
+        //1 recuepère le user par son identifiant avec les roles
+        //2 user et le password hashé
+        //3A tu compares le password hashé avec une hash du password tapé
+        //    ex: if(mot de pass badd = sha1(mot dep asse tapé))
+        //3B passwordverify(mdp en clair tapé, le mdp bdd);
+
+        // password_hash et password_verify
+
+
+        // instancie Session log, session role + les preferences / les config
+        // Alimente les vars de sessions
+
+
+    }
+
+    //faire une logout -> session_destroy()
+
 }

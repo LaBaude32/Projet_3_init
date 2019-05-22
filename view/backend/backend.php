@@ -26,19 +26,23 @@
     <!-- Brouillons -->
     <h3 class="p-5">Brouillons des chapitres en cours :</h3>
     <div class="list-group">
-        <?php foreach ($drafts as $draft):?>
-            <div class="list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-between">
-                    <p>Créé le <?= $draft->getcreatedAt()->format('d \/ m \/ Y'); ?></p>
-                </div>
-                <div class="d-flex w-100 justify-content-between">
-                    <p class="mb-1"><?= $draft->getTitle(); ?></p>
-                    <div>
-                        <a href="index.php?id=<?= $draft->getId();?>&amp;action=editChapter" class="justify-content-end btn btn-secondary">Modifier</a>
+        <?php if ($drafts): ?>
+            <?php foreach ($drafts as $draft):?>
+                <div class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <p>Créé le <?= $draft->getcreatedAt()->format('d \/ m \/ Y'); ?></p>
+                    </div>
+                    <div class="d-flex w-100 justify-content-between">
+                        <p class="mb-1"><?= $draft->getTitle(); ?></p>
+                        <div>
+                            <a href="index.php?id=<?= $draft->getId();?>&amp;action=editChapter" class="justify-content-end btn btn-secondary">Modifier</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        <?php endforeach;?>
+            <?php endforeach;?>
+        <?php else:?>
+            <p>Pas de brouillons.</p>
+        <?php endif;?>
     </div>
     <!-- Chapitres déjà publiés -->
     <h3 class="p-5">Les chapitres du livre déjà publiés :</h3>
