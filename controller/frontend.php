@@ -55,6 +55,6 @@ class Frontend
 
     }
 
-    //faire une logout -> session_destroy()
+    //faire une logout -> session_destroy() -> redicrection acceuil
 
 }

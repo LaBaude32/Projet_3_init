@@ -15,7 +15,7 @@ $routes = array(
 					'addComment' => array('controller' => 'frontend', 'method' => 'actionCommentAdded'),
 
 					//'admin' => array('controller' => 'backend', 'method' => 'actionLogin'),
-					'admin' => array('controller' => 'backend', 'method' => 'actionBackend'),
+					'admin' => array('controller' => 'backend', 'method' => 'actionBackend', 'roles' => array('ADMIN', 'MANAGER' )),
 					'validateComment' => array('controller' => 'backend', 'method' => 'actionValidateComment'),
 					'deleteComment' => array('controller' => 'backend', 'method' => 'actionDeleteComment'),
 					'editChapter' => array('controller' => 'backend', 'method' => 'actionEditChapter'),
@@ -31,9 +31,22 @@ if(key_exists($action, $routes)) {
 	$controller = ucfirst($routes[$action]['controller']);
 	$method = $routes[$action]['method'];
 
-	$controller = new $controller();
-	$controller->$method();
+	if($controller == "backend") {
+		if($_SESSION['log'] == 1 && in_array($_SESSION['role'], $routes[$action]['roles'] )){
+
+			$controller = new $controller();
+			$controller->$method();
+		} else {
+			echo '403'; // new ErrorPage() -> sho403();
+		}
+	} else {
+		$controller = new $controller();
+		$controller->$method();
+	}
+
+
+
 
 } else {
-	echo '404';
+	echo '404'; // new ErrorPage() -> sho404();
 }
