@@ -4,7 +4,7 @@ class Backend
     public function actionBackend()
     {
         $PostManager = new PostManager();
-        $posts = $PostManager->findAll(); //a modifer pour n'avoir que ceux publiés
+        $posts = $PostManager->findPublished(); //a modifer pour n'avoir que ceux publiés
 
         $BackendManager = new BackendManager();
         $comments = $BackendManager->returnCommentsToValidate();
@@ -75,6 +75,23 @@ class Backend
             $Backend = new Backend();
             $Backend->actionEditChapter();
 
+        }
+    }
+
+    public function actionCreateDraft()
+    {
+        include(VIEW.'backend/createChapter.php');
+    }
+
+    public function actionSaveNewDraft()
+    {
+        if (isset($_POST['title']) && isset($_POST['content']) && isset($_POST['isDraft'])){
+
+           // var_dump($_POST['postContent']); die;
+            $PostManager = new PostManager();
+            $PostManager->createDraft($_POST['title'], $_POST['content'],$_POST['isDraft']);
+
+            header('Location:index.php');
         }
     }
 }

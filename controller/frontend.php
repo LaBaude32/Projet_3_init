@@ -4,7 +4,7 @@ class Frontend
     public function actionHome()
     {
         $PostManager = new PostManager();
-        $posts = $PostManager->findAll();
+        $posts = $PostManager->findPublished();
         include(VIEW.'home.php');
     }
 

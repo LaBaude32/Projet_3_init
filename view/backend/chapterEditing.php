@@ -11,7 +11,7 @@
             </textarea>
         <button type="submit" class="btn btn-success mt-3">Enregistrer le brouillon</button>
         <blockquote class="blockquote mt-3">
-            <footer class="blockquote-footer font-italic">CrÃ©Ã© le <?= $post->getCreatedAt()->format('d \/ m \/ Y'); ?></footer>
+            <footer class="blockquote-footer font-italic">CrÃ©Ã© le <?= $post->getCreatedAt()->format('d \/ m \/ Y'); ?> - Enregistré pour la dernière fois le <?= $post->getsavedAt()->format('d \/ m \/ Y à H:i:s'); ?></footer>
         </blockquote>
     </form>
     <a class="btn btn-info" href="index.php?action=admin" role="button">Retour a l'administration</a>
@@ -19,4 +19,4 @@
 </div>
 
 <?php $content = ob_get_clean(); ?>
-<?php include(VIEW.'gabarit.php'); ?>
+<?php include(VIEW.'backend/gabaritBack.php'); ?>

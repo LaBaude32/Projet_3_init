@@ -21,6 +21,8 @@ $routes = array(
 					'editChapter' => array('controller' => 'backend', 'method' => 'actionEditChapter'),
 					'publishChapter' => array('controller' => 'backend', 'method' => 'actionPublishChapter'),
 					'saveDraft' => array('controller' => 'backend', 'method' => 'actionSaveDraft'),
+					'createDraft' => array('controller' => 'backend', 'method' => 'actionCreateDraft'),
+					'saveNewDraft' => array('controller' => 'backend', 'method' => 'actionSaveNewDraft'),
 				);
 
 //echo '<pre>'; var_dump('controller/'.$routes[$action]['controller'].'.php'); die;

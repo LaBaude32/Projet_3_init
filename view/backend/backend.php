@@ -4,6 +4,10 @@
         <h1>Administration</h1>
         <h2>Billet simple pour l'Alsaka</h2>
     </div>
+    <div>
+         <a href="index.php?action=createDraft" class="justify-content-end btn btn-info">Créer un nouveau chapitre</a>
+    </div>
+
     <!-- Commentaires -->
     <h3 class="p-5">Les commentaires à valider :</h3>
     <div class="list-group">
@@ -30,7 +34,7 @@
             <?php foreach ($drafts as $draft):?>
                 <div class="list-group-item list-group-item-action">
                     <div class="d-flex w-100 justify-content-between">
-                        <p>Créé le <?= $draft->getcreatedAt()->format('d \/ m \/ Y'); ?></p>
+                        <p>Créé le <?= $draft->getcreatedAt()->format('d \/ m \/ Y'); ?> - Enregistré pour la dernière fois le <?= $draft->getsavedAt()->format('d \/ m \/ Y à H:i:s'); ?></p>
                     </div>
                     <div class="d-flex w-100 justify-content-between">
                         <p class="mb-1"><?= $draft->getTitle(); ?></p>
@@ -50,7 +54,7 @@
         <?php foreach ($posts as $post):?>
             <div class="list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-between">
-                    <p>Publié le <?= $post->getPublishedAt()->format('d \/ m \/ Y'); ?></p>
+                    <p>Publié le <?= $post->getPublishedAt()->format('d \/ m \/ Y à H:i:s'); ?></p>
                 </div>
                 <div class="d-flex w-100 justify-content-between">
                     <p class="mb-1"><?= $post->getTitle(); ?></p>
@@ -65,4 +69,4 @@
 </div>
 
 <?php $content = ob_get_clean(); ?>
-<?php include(VIEW.'gabarit.php'); ?>
+<?php include(VIEW.'backend/gabaritBack.php'); ?>

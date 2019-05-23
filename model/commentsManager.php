@@ -3,6 +3,7 @@ class CommentsManager extends BddManager
 {
 	public function findAll()
 	{
+		$comments = array();
 		$bdd =$this->getBdd();
 
 		$query = 'SELECT * FROM comments';
@@ -51,6 +52,7 @@ class CommentsManager extends BddManager
 
 	public function returnComments($ID)
 	{
+		$toReturn = array();
 		$CommentsManager = new CommentsManager();
 		$comments = $CommentsManager->findAll();
 
@@ -68,7 +70,7 @@ class CommentsManager extends BddManager
 		$req = $bdd->prepare('INSERT INTO comments(post_id, pseudo, content, report, published_at) VALUES(:PostId, :Pseudo, :Content, 0, NOW())');
 		$req->bindValue('PostId', $_POST['PostID'], PDO::PARAM_INT);
 		$req->bindValue('Pseudo', $_POST['Pseudo'], PDO::PARAM_STR);
-		$req->bindValue('Content', $_POST['Comments_content'], PDO::STR);
+		$req->bindValue('Content', $_POST['Comments_content'], PDO::PARAM_STR);
 
 		$req->execute();
 	}

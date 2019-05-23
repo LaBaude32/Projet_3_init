@@ -12,7 +12,7 @@
 
     <a class="btn btn-info" href="index.php" role="button">Retour au sommaire</a>
 
-    <p class="display-4">Commentaires :</p>
+    <p class="display-4 mt-5">Commentaires :</p>
     <button type="button" class="btn btn-secondary"> Ajouter un commentaire</button>
     <form method="post" action="index.php?action=commentAdded">
         <p>Ajouter un commentaire :</p>

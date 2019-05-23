@@ -8,6 +8,7 @@ class Post
     private $content;
     private $createdAt;
     private $publishedAt;
+    private $savedAt;
     private $isDraft;
 
 
@@ -146,5 +147,25 @@ class Post
     public function setIsDraft($isDraft)
     {
        $this->isDraft = $isDraft;
+    }
+
+    /**
+     * Get the value of savedAt
+     */
+    public function getSavedAt()
+    {
+        return $this->savedAt;
+    }
+
+    /**
+     * Set the value of savedAt
+     *
+     * @return  self
+     */
+    public function setSavedAt($savedAt)
+    {
+        $this->savedAt = new DateTime($savedAt);
+
+        return $this;
     }
 }
