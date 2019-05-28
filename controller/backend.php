@@ -3,6 +3,7 @@ class Backend
 {
     public function actionBackend()
     {
+
         $PostManager = new PostManager();
         $posts = $PostManager->findPublished(); //a modifer pour n'avoir que ceux publiés
 
@@ -93,5 +94,22 @@ class Backend
 
             header('Location:index.php');
         }
+    }
+
+    public function actionCreateAutorForm()
+    {
+        include(VIEW.'backend/createAutor.php');
+    }
+
+    public function actionCreateAutor()
+    {
+        if (isset($_POST['email']) && isset($_POST['pwd']) && isset($_POST['isDraft'])){
+
+
+            header('Location:index.php');
+         }
+
+
+        include(VIEW.'backend/createAutor.php');
     }
 }

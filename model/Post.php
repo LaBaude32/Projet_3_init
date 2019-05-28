@@ -122,31 +122,12 @@ class Post
         return $this->publishedAt;
     }
 
-
     /**
      * @param mixed $publishedAt
      */
     public function setPublishedAt($publishedAt)
     {
        $this->publishedAt = new DateTime($publishedAt);
-    }
-
-
-    /**
-     * @return mixed
-     */
-    public function getIsDraft()
-    {
-        return htmlspecialchars($this->isDraft);
-    }
-
-
-    /**
-     * @param mixed $isDraft
-     */
-    public function setIsDraft($isDraft)
-    {
-       $this->isDraft = $isDraft;
     }
 
     /**
@@ -167,5 +148,22 @@ class Post
         $this->savedAt = new DateTime($savedAt);
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsDraft()
+    {
+        return htmlspecialchars($this->isDraft);
+    }
+
+
+    /**
+     * @param mixed $isDraft
+     */
+    public function setIsDraft($isDraft)
+    {
+       $this->isDraft = $isDraft;
     }
 }

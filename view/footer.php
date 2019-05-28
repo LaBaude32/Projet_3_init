@@ -5,7 +5,9 @@
     			<div class="jumbotron text-center">
 					<a href="index.php">Accueil</a>
 					-
-    				<a href="index.php?action=admin">Adminstration</a>
+					<a href="index.php?action=connectionFrom">Adminstration</a>
+					-
+					<a href="index.php?action=createAdmin">Ad admin</a>
     			</div>
     		</div>
     	</div>
