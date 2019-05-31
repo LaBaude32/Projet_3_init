@@ -29,13 +29,13 @@
         </div>
         <p>Quel rôle souhaitez-vous donner au nouvel administrateur ?</p>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="role" value="Admin" >
+            <input class="form-check-input" type="radio" name="role" value="Admin">
             <label class="form-check-label" for="exampleRadios1">
                 Administrateur
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="role"" value="Manager">
+            <input class="form-check-input" type="radio" name="role"" value=" Manager">
             <label class="form-check-label" for="exampleRadios2">
                 Manager
             </label>
@@ -45,4 +45,4 @@
 </div>
 
 <?php $content = ob_get_clean(); ?>
-<?php include(VIEW.'backend/gabaritBack.php'); ?>
+<?php include(VIEW . 'backend/gabaritBack.php'); ?>

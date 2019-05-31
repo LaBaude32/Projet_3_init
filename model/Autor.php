@@ -164,4 +164,9 @@ class Autor
         return $this;
     }
 
+    public function getFullName()
+    {
+        $fullName = ucfirst(strtolower($this->firstName)) . ' ' . strtoupper($this->lastName);
+        return $fullName;
+    }
 }

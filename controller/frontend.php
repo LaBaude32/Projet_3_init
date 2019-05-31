@@ -35,7 +35,14 @@ class Frontend
 
     public function actionConnectionForm()
     {
-        include(VIEW.'connection.php');
+        if(!isset($_SESSION['log'])){
+            $_SESSION['log'] = '';
+        }
+        if( $_SESSION['log'] == 0){
+            include(VIEW.'connection.php');
+        }else{
+            header('Location:index.php?action=admin');
+        }
     }
 
     public function actionLogin()
@@ -43,13 +50,15 @@ class Frontend
         if(isset($_POST['email']) && isset($_POST['pwd'])){
             $AutorManager = new AutorManager;
             $autor = $AutorManager->findOneByEmail($_POST['email']);
-            if(password_verify($_POST['pwd'], $autor->getPwd())){
+            if(password_verify($_POST['pwd'], $autor->getPwd()) && $_POST['email'] == $autor->getEmail()){
                 $_SESSION['log'] = 1;
                 $_SESSION['pseudo'] = $autor->getPseudo();
                 $_SESSION['role'] = $autor->getRole();
+                header('Location:index.php?action=admin');
             }else{
                 include(VIEW . '403.php');
             }
+
         }
 
         //1 recuepère le user par son identifiant avec les roles
@@ -63,10 +72,6 @@ class Frontend
 
         // instancie Session log, session role + les preferences / les config
         // Alimente les vars de sessions
-        var_dump($autor->getRole());
-        var_dump($_SESSION['role']);
-
-        //header('Location:index.php?action=admin');
     }
 
     //faire une logout -> session_destroy() -> redicrection acceuil

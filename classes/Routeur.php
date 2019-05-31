@@ -27,8 +27,12 @@ class Routeur
         'saveDraft' => array('controller' => 'backend', 'method' => 'actionSaveDraft', 'roles' => array('ADMIN', 'MANAGER')),
         'createDraft' => array('controller' => 'backend', 'method' => 'actionCreateDraft', 'roles' => array('ADMIN', 'MANAGER')),
         'saveNewDraft' => array('controller' => 'backend', 'method' => 'actionSaveNewDraft', 'roles' => array('ADMIN', 'MANAGER')),
-        'createAdminFrom' => array('controller' => 'backend', 'method' => 'actionCreateAutorForm', 'roles' => array('ADMIN', 'MANAGER', 'VISITOR')),
-        'createAdmin' => array('controller' => 'backend', 'method' => 'actionCreateAutor', 'roles' => array('ADMIN', 'MANAGER', 'VISITOR')),
+        'createAdminFrom' => array('controller' => 'backend', 'method' => 'actionCreateAutorForm', 'roles' => array('ADMIN')),
+        'createAdmin' => array('controller' => 'backend', 'method' => 'actionCreateAutor', 'roles' => array('ADMIN')),
+        'deconnection' => array('controller' => 'backend', 'method' => 'actionLogOut', 'roles' => array('ADMIN', 'MANAGER', 'VISITOR')),
+        'managerAutors' => array('controller' => 'backend', 'method' => 'actionManageAutors', 'roles' => array('ADMIN')),
+        'displayAutor' => array('controller' => 'backend', 'method' => 'actionDisplayautor', 'roles' => array('ADMIN')),
+
     );
 
     public function __construct($action)
@@ -48,12 +52,6 @@ class Routeur
 
             $controller = ucfirst($routes[$action]['controller']);
             $method = $routes[$action]['method'];
-
-            var_dump($_SESSION['role']);
-            $_SESSION['log'] = 1;
-            var_dump($_SESSION['log']);
-            var_dump($routes[$action]['roles']);
-            var_dump(in_array($_SESSION['role'], $routes[$action]['roles']));
 
             if ($controller == "Backend") {
                 if ($_SESSION['log'] == 1 && in_array($_SESSION['role'], $routes[$action]['roles'])) {

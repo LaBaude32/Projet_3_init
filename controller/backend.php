@@ -103,13 +103,50 @@ class Backend
 
     public function actionCreateAutor()
     {
-        if (isset($_POST['email']) && isset($_POST['pwd']) && isset($_POST['isDraft'])){
-
-
+        if (isset($_POST['email']) && isset($_POST['pwd']) && isset($_POST['lastName']) && isset($_POST['firstName']) && isset($_POST['pseudo']) && isset($_POST['role'])){
+            $email = $_POST['email'];
+            $pwd =
+            $lastName =
+            $firtname =
             header('Location:index.php');
-         }
-
+        }
 
         include(VIEW.'backend/createAutor.php');
+    }
+
+    public function actionLogOut()
+    {
+        session_destroy();
+        header('Location:index.php');
+    }
+
+    public function actionManageAutors()
+    {
+        $AutorManager = new AutorManager();
+        $autors = $AutorManager->findAll(); //a modifer pour n'avoir que ceux publiés
+
+        include(VIEW.'backend/allAutors.php');
+    }
+
+    public function actionDisplayAutor()
+    {
+        if (isset($_GET['id']) && $_GET['id'] >= 0) {
+	        $id = $_GET['id'];
+		    }
+        $AutorManager = new AutorManager();
+        $autor = $AutorManager->findOneById($id); //a modifer pour n'avoir que ceux publiés
+
+        include(VIEW.'backend/displayAutor.php');
+    }
+
+    public function actionDeleteAutor()
+    {
+        if (isset($_GET['id']) && $_GET['id'] >= 0) {
+	        $id = $_GET['id'];
+		    }
+        $AutorManager = new AutorManager();
+        $autor = $AutorManager->delete($id); //a modifer pour n'avoir que ceux publiés
+
+        include(VIEW.'backend/displayAutor.php');
     }
 }
