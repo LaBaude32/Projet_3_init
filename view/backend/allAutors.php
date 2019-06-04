@@ -16,8 +16,8 @@
                     <p class="mb-1"><?= $autor->getPseudo(); ?></p>
                     <div>
                         <a href="index.php?id=<?= $autor->getId(); ?>&amp;action=displayAutor" class="justify-content-end btn btn-info">Voir</a>
-                        <a href="index.php?id=<?= $autor->getId(); ?>&amp;action=editautor" class="justify-content-end btn btn-warning">Modifier</a>
-                        <a href="index.php?id=<?= $autor->getId(); ?>&amp;action=deleteautor" class="justify-content-end btn btn-danger">Supprimer</a>
+                        <a href="index.php?id=<?= $autor->getId(); ?>&amp;action=editAutor" class="justify-content-end btn btn-warning">Modifier</a>
+                        <a href="index.php?id=<?= $autor->getId(); ?>&amp;action=deleteAutor" class="justify-content-end btn btn-danger">Supprimer</a>
                     </div>
                 </div>
             </div>

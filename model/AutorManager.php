@@ -53,9 +53,23 @@ class AutorManager extends BddManager
         return $autors;
     }
 
-    public function update()
+    public function update($id, $pseudo, $email, $lastName, $firstName, $pwd, $role)
     {
         $bdd = $this->getBdd();
+
+        $id = (int)$id;
+        $pwd = password_hash($pwd, PASSWORD_DEFAULT);
+
+		$req = $bdd->prepare('UPDATE autor SET pseudo = :pseudo, email = :email, last_name = :lastName, first_name = :firstName, pwd = :pwd, role = :role  WHERE id= :id');
+        $req->bindValue('pseudo', $pseudo, PDO::PARAM_STR);
+        $req->bindValue('email', $email, PDO::PARAM_STR);
+        $req->bindValue('lastName', $lastName, PDO::PARAM_STR);
+        $req->bindValue('firstName', $firstName, PDO::PARAM_STR);
+        $req->bindValue('pdw', $pwd, PDO::PARAM_STR);
+        $req->bindValue('role', $role, PDO::PARAM_STR);
+		$req->bindValue('id', $id, PDO::PARAM_STR);
+
+		$req->execute();
     }
 
     public function delete($id)

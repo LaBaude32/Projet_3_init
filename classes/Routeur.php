@@ -31,8 +31,9 @@ class Routeur
         'createAdmin' => array('controller' => 'backend', 'method' => 'actionCreateAutor', 'roles' => array('ADMIN')),
         'deconnection' => array('controller' => 'backend', 'method' => 'actionLogOut', 'roles' => array('ADMIN', 'MANAGER', 'VISITOR')),
         'managerAutors' => array('controller' => 'backend', 'method' => 'actionManageAutors', 'roles' => array('ADMIN')),
-        'displayAutor' => array('controller' => 'backend', 'method' => 'actionDisplayautor', 'roles' => array('ADMIN')),
-
+        'displayAutor' => array('controller' => 'backend', 'method' => 'actionDisplayAutor', 'roles' => array('ADMIN')),
+        'editAutor' => array('controller' => 'backend', 'method' => 'actionEditAutor', 'roles' => array('ADMIN')),
+        'updateAutor' => array('controller' => 'backend', 'method' => 'actionUpdateAutor', 'roles' => array('ADMIN')),
     );
 
     public function __construct($action)
