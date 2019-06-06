@@ -50,6 +50,22 @@ class AutorManager extends BddManager
 
     public function insertBdd($pseudo, $email, $lastName, $firstName, $pwd, $role) {
 
+        $bdd = $this->getBdd();
+
+        $lastName = strtoupper($lastName);
+        $firstName = ucfirst(strtolower($firstName));
+        $role = strtoupper($role);
+
+        $query = "INSERT INTO autor pseudo = :pseudo, email = :email, last_name = :lastName, first_name = :firstName, role_admin = :roleAdmin, pwd = :pwd ";
+
+        $req = $bdd->prepare($query);
+        $req->bindValue('pseudo', $pseudo, PDO::PARAM_STR);
+        $req->bindValue('email', $email, PDO::PARAM_STR);
+        $req->bindValue('lastName', $lastName, PDO::PARAM_STR);
+        $req->bindValue('firstName', $firstName, PDO::PARAM_STR);
+        $req->bindValue('pwd', password_hash($pwd, PASSWORD_DEFAULT), PDO::PARAM_STR);
+        $req->bindValue('roleAdmin', $role, PDO::PARAM_STR);
+        $req->execute();
     }
 
 
@@ -71,7 +87,6 @@ class AutorManager extends BddManager
         $lastName = strtoupper($lastName);
         $firstName = ucfirst(strtolower($firstName));
         $role = strtoupper($role);
-        var_dump($id);
 
         $query = "UPDATE autor SET pseudo = :pseudo, email = :email, last_name = :lastName, first_name = :firstName, role_admin = :roleAdmin ";
         if($pwd) $query .= ", pwd = :pwd";
