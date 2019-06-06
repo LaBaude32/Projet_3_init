@@ -10,7 +10,7 @@
         <?php foreach ($autors as $autor) : ?>
             <div class="list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-between">
-                    <small><?= $autor->getRole(); ?></small>
+                    <small><?= $autor->getRoleAdmin(); ?></small>
                 </div>
                 <div class="d-flex w-100 justify-content-between mt-3">
                     <p class="mb-1"><?= $autor->getPseudo(); ?></p>

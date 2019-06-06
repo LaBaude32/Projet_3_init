@@ -2,11 +2,6 @@
 
 class AutorManager extends BddManager
 {
-    public function create()
-    {
-        $bdd = $this->getBdd();
-    }
-
     public function findOneByEmail($email)
     {
         $bdd = $this->getBdd();
@@ -53,23 +48,46 @@ class AutorManager extends BddManager
         return $autors;
     }
 
+    public function insertBdd($pseudo, $email, $lastName, $firstName, $pwd, $role) {
+
+    }
+
+
+    public function save($id, $pseudo, $email, $lastName, $firstName, $pwd, $role)
+    {
+        if($id == null) {
+            $this->insertBdd($pseudo, $email, $lastName, $firstName, $pwd, $role);
+        } else {
+            $this->update($id, $pseudo, $email, $lastName, $firstName, $pwd, $role);
+        }
+    }
+
     public function update($id, $pseudo, $email, $lastName, $firstName, $pwd, $role)
     {
+
         $bdd = $this->getBdd();
 
         $id = (int)$id;
-        $pwd = password_hash($pwd, PASSWORD_DEFAULT);
+        $lastName = strtoupper($lastName);
+        $firstName = ucfirst(strtolower($firstName));
+        $role = strtoupper($role);
+        var_dump($id);
 
-		$req = $bdd->prepare('UPDATE autor SET pseudo = :pseudo, email = :email, last_name = :lastName, first_name = :firstName, pwd = :pwd, role = :role  WHERE id= :id');
+        $query = "UPDATE autor SET pseudo = :pseudo, email = :email, last_name = :lastName, first_name = :firstName, role_admin = :roleAdmin ";
+        if($pwd) $query .= ", pwd = :pwd";
+        $query .= " WHERE id = :id";
+
+		$req = $bdd->prepare($query);
         $req->bindValue('pseudo', $pseudo, PDO::PARAM_STR);
         $req->bindValue('email', $email, PDO::PARAM_STR);
         $req->bindValue('lastName', $lastName, PDO::PARAM_STR);
         $req->bindValue('firstName', $firstName, PDO::PARAM_STR);
-        $req->bindValue('pdw', $pwd, PDO::PARAM_STR);
-        $req->bindValue('role', $role, PDO::PARAM_STR);
-		$req->bindValue('id', $id, PDO::PARAM_STR);
-
-		$req->execute();
+        if($pwd) {
+            $req->bindValue('pwd', password_hash($pwd, PASSWORD_DEFAULT), PDO::PARAM_STR);
+        }
+        $req->bindValue('roleAdmin', $role, PDO::PARAM_STR);
+		$req->bindValue('id', $id, PDO::PARAM_INT);
+        $req->execute();
     }
 
     public function delete($id)

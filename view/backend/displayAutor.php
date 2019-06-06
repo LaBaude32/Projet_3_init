@@ -19,7 +19,7 @@
         </tr>
         <tr>
             <th scope="row">Role</th>
-            <td><?= $autor->getRole(); ?></td>
+            <td><?= $autor->getRoleAdmin(); ?></td>
         </tr>
     </table>
     <a class="btn btn-info" href="index.php?id=<?= $autor->getId(); ?>&amp;action=editAutor" role="button">modifier</a>

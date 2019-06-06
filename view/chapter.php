@@ -1,5 +1,5 @@
 <?php ob_start(); ?>
-<?php $ID-- ?> <!-- � regler !!! -->
+<?php $ID-- ?> <!-- à regler !!! -->
 <div class="col-lg-12">
         <div class="jumbotron">
             <h1>Billet simple pour l'Alaska</h1>
@@ -7,7 +7,7 @@
         </div>
         <p> <?= $posts[$ID]->getContent(); ?> </p>
         <blockquote class="blockquote">
-            <footer class="blockquote-footer font-italic">Publi� le <?= $posts[$ID]->getPublishedAt()->format('d \/ m \/ Y'); ?></footer>
+            <footer class="blockquote-footer font-italic">Publié le <?= $posts[$ID]->getPublishedAt()->format('d \/ m \/ Y'); ?></footer>
         </blockquote>
 
     <a class="btn btn-info" href="index.php" role="button">Retour au sommaire</a>
@@ -33,7 +33,7 @@
         <?php foreach ($comments as $comment):?>
             <div class="list-group-item list-group-item-action">
                 <div class="d-flex w-100 text-right">
-                    <small>Publié le <?= $comment->getPublishedAt()->format('d \/ m \/ Y'); ?></small>
+                    <small>PubliÃ© le <?= $comment->getPublishedAt()->format('d \/ m \/ Y'); ?></small>
                 </div>
                 <p class="mb-1"><?= $comment->getContent(); ?></p>
                 <small><?= $comment->getPseudo(); ?></small>

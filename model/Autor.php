@@ -7,7 +7,7 @@ class Autor
     private $firstName;
     private $lastName;
     private $pwd;
-    private $role;
+    private $roleAdmin;
 
     public function hydrate($datas) { // array('id' => 5, 'autor_id' => '6) // setAutor_id => setAutorId
         foreach($datas as $field => $value) {
@@ -145,21 +145,21 @@ class Autor
     }
 
     /**
-     * Get the value of role
+     * Get the value of roleAdmin
      */
-    public function getRole()
+    public function getRoleAdmin()
     {
-        return $this->role;
+        return $this->roleAdmin;
     }
 
     /**
-     * Set the value of role
+     * Set the value of roleAdmin
      *
      * @return  self
      */
-    public function setRole($role)
+    public function setRoleAdmin($roleAdmin)
     {
-        $this->role = $role;
+        $this->roleAdmin = $roleAdmin;
 
         return $this;
     }
@@ -168,5 +168,12 @@ class Autor
     {
         $fullName = ucfirst(strtolower($this->firstName)) . ' ' . strtoupper($this->lastName);
         return $fullName;
+    }
+
+    public function showCheckedValue($value)
+    {
+        if($this->roleAdmin == $value){
+            return 'checked';
+        }
     }
 }

@@ -28,7 +28,7 @@ class Routeur
         'createDraft' => array('controller' => 'backend', 'method' => 'actionCreateDraft', 'roles' => array('ADMIN', 'MANAGER')),
         'saveNewDraft' => array('controller' => 'backend', 'method' => 'actionSaveNewDraft', 'roles' => array('ADMIN', 'MANAGER')),
         'createAdminFrom' => array('controller' => 'backend', 'method' => 'actionCreateAutorForm', 'roles' => array('ADMIN')),
-        'createAdmin' => array('controller' => 'backend', 'method' => 'actionCreateAutor', 'roles' => array('ADMIN')),
+        'createAdmin' => array('controller' => 'backend', 'method' => 'actionEditAutor', 'roles' => array('ADMIN')),
         'deconnection' => array('controller' => 'backend', 'method' => 'actionLogOut', 'roles' => array('ADMIN', 'MANAGER', 'VISITOR')),
         'managerAutors' => array('controller' => 'backend', 'method' => 'actionManageAutors', 'roles' => array('ADMIN')),
         'displayAutor' => array('controller' => 'backend', 'method' => 'actionDisplayAutor', 'roles' => array('ADMIN')),

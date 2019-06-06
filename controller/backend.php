@@ -92,22 +92,10 @@ class Backend
         }
     }
 
-    public function actionCreateAutorForm()
-    {
-        include(VIEW . 'backend/createAutor.php');
-    }
-
-    public function actionCreateAutor()
-    {
-        if (isset($_POST['email']) && isset($_POST['pwd']) && isset($_POST['lastName']) && isset($_POST['firstName']) && isset($_POST['pseudo']) && isset($_POST['role'])) {
-            $email = $_POST['email'];
-            $pwd =
-            $lastName =
-            $firtname =
-            header('Location:index.php');
-        }
-
-    }
+    // public function actionCreateAutorForm()
+    // {
+    //     include(VIEW . 'backend/createAutor.php');
+    // }
 
     public function actionLogOut()
     {
@@ -129,7 +117,7 @@ class Backend
             $id = $_GET['id'];
         }
         $AutorManager = new AutorManager();
-        $autor = $AutorManager->findOneById($id); //a modifer pour n'avoir que ceux publiés
+        $autor = $AutorManager->findOneById($id);
 
         include(VIEW . 'backend/displayAutor.php');
     }
@@ -140,25 +128,34 @@ class Backend
             $id = $_GET['id'];
         }
         $AutorManager = new AutorManager();
-        $autor = $AutorManager->delete($id); //a modifer pour n'avoir que ceux publiés
+        $autor = $AutorManager->delete($id);
 
         include(VIEW . 'backend/displayAutor.php');
     }
 
-    public function actionEditAutor()
+    public function actionEditAutor() // toutes les edit/create passe par ce controller, la création étant un cas particulier
     {
         if (isset($_GET['id']) && $_GET['id'] >= 0) {
             $id = $_GET['id'];
+            $AutorManager = new AutorManager();
+            $autor = $AutorManager->findOneById($id);
+        } else {
+            $autor = new Autor();
         }
-        $AutorManager = new AutorManager();
-        $autor = $AutorManager->findOneById($id); //a modifer pour n'avoir que ceux publiés
 
-        include(VIEW . 'backend/createAutor.php');
+
+        include(VIEW . 'backend/editAutor.php');
     }
 
     public function actionUpdateAutor()
     {
-        if (isset ($_POST['id']) && isset($_POST['email']) && isset($_POST['pwd']) && isset($_POST['lastName']) && isset($_POST['firstName']) && isset($_POST['pseudo']) && isset($_POST['role'])) {
+        if (isset ($_POST['id']) && isset($_POST['email']) && isset($_POST['lastName']) && isset($_POST['firstName']) && isset($_POST['pseudo']) && isset($_POST['role'])) {
+
+
+            // vérification de s champs et si echec creation d'un tableau error et revoie vers la vue edit
+
+// si submit && pas d'erreur
+
             $id = $_POST['id'];
             $email = $_POST['email'];
             $pwd = $_POST['pwd'];
@@ -166,12 +163,12 @@ class Backend
             $firstName = $_POST['firstName'];
             $pseudo = $_POST['pseudo'];
             $role =  $_POST['role'];
-            header('Location:index.php');
 
             $AutorManager = new AutorManager();
-            $autor = $AutorManager->update($id, $pseudo, $email, $lastName, $firstName, $pwd, $role); //a modifer pour n'avoir que ceux publiés
+            $autor = $AutorManager->save($id, $pseudo, $email, $lastName, $firstName, $pwd, $role);
 
-            header('Location:index.php&action=displayAutor&amp;id='. $id);
+            header('Location:index.php?action=displayAutor&id='. $id);
         }
+        echo 'probleme';
     }
 }
