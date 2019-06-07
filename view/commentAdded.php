@@ -9,4 +9,4 @@
 </div>
 
 <?php $content = ob_get_clean(); ?>
-<?php include('gabarit.php'); ?>
+<?php include(VIEW.'gabarit.php'); ?>
