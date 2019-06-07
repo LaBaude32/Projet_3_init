@@ -142,23 +142,25 @@ class Backend
 
     public function actionUpdateAutor()
     {
-        if (isset ($_POST['id']) && isset($_POST['email']) && isset($_POST['lastName']) && isset($_POST['firstName']) && isset($_POST['pseudo']) && isset($_POST['role'])) {
+        if (isset($_POST['id']) && isset($_POST['email']) && isset($_POST['lastName']) && isset($_POST['firstName']) && isset($_POST['pseudo']) && isset($_POST['role'])) {
 
 
-        // vérification de s champs et si echec creation d'un tableau error et revoie vers la vue edit
+            // vérification de s champs et si echec creation d'un tableau error et revoie vers la vue edit
 
-        // si submit && pas d'erreur
+            // si submit && pas d'erreur
 
-            $id = $_POST['id'];
-            $email = $_POST['email'];
-            $pwd = $_POST['pwd'];
-            $lastName = $_POST['lastName'];
-            $firstName = $_POST['firstName'];
-            $pseudo = $_POST['pseudo'];
-            $role =  $_POST['role'];
+            $autorArray = array(
+                'id' => $_POST['id'],
+                'email' => $_POST['email'],
+                'pwd' => $_POST['pwd'],
+                'lastName' => $_POST['lastName'],
+                'firstName' => $_POST['firstName'],
+                'pseudo' => $_POST['pseudo'],
+                'roleAdmin' => $_POST['role'],
+            );
 
             $AutorManager = new AutorManager();
-            $autor = $AutorManager->save($id, $pseudo, $email, $lastName, $firstName, $pwd, $role);
+            $autor = $AutorManager->save($autorArray);
 
             header('Location:index.php?action=managerAutors');
         }

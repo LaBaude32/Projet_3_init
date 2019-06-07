@@ -48,59 +48,60 @@ class AutorManager extends BddManager
         return $autors;
     }
 
-    public function insertBdd($pseudo, $email, $lastName, $firstName, $pwd, $role) {
+    public function insertBdd($autorArray)
+    {
 
         $bdd = $this->getBdd();
 
-        $lastName = strtoupper($lastName);
-        $firstName = ucfirst(strtolower($firstName));
-        $role = strtoupper($role);
+        $lastName = strtoupper($autorArray['lastName']);
+        $firstName = ucfirst(strtolower($autorArray['firstName']));
+        $role = strtoupper($autorArray['roleAdmin']);
 
         $query = "INSERT INTO autor(pseudo, email, last_name, first_name, role_admin, pwd) VALUES(:pseudo, :email, :lastName, :firstName, :roleAdmin, :pwd)";
         $req = $bdd->prepare($query);
-        $req->bindValue('pseudo', $pseudo, PDO::PARAM_STR);
-        $req->bindValue('email', $email, PDO::PARAM_STR);
-        $req->bindValue('lastName', $lastName, PDO::PARAM_STR);
-        $req->bindValue('firstName', $firstName, PDO::PARAM_STR);
-        $req->bindValue('pwd', password_hash($pwd, PASSWORD_DEFAULT), PDO::PARAM_STR);
-        $req->bindValue('roleAdmin', $role, PDO::PARAM_STR);
+        $req->bindValue('pseudo', $autorArray['pseudo'], PDO::PARAM_STR);
+        $req->bindValue('email', $autorArray['email'], PDO::PARAM_STR);
+        $req->bindValue('lastName', $autorArray['lastName'], PDO::PARAM_STR);
+        $req->bindValue('firstName', $autorArray['firstName'], PDO::PARAM_STR);
+        $req->bindValue('pwd', password_hash($autorArray['pwd'], PASSWORD_DEFAULT), PDO::PARAM_STR);
+        $req->bindValue('roleAdmin', $autorArray['roleAdmin'], PDO::PARAM_STR);
         $req->execute();
     }
 
 
-    public function save($id, $pseudo, $email, $lastName, $firstName, $pwd, $role)
+    public function save($autorArray)
     {
-        if($id == null) {
-            $this->insertBdd($pseudo, $email, $lastName, $firstName, $pwd, $role);
+        if ($autorArray['id'] == null) {
+            $this->insertBdd($autorArray);
         } else {
-            $this->update($id, $pseudo, $email, $lastName, $firstName, $pwd, $role);
+            $this->update($autorArray);
         }
     }
 
-    public function update($id, $pseudo, $email, $lastName, $firstName, $pwd, $role)
+    public function update($autorArray)
     {
 
         $bdd = $this->getBdd();
 
-        $id = (int)$id;
-        $lastName = strtoupper($lastName);
-        $firstName = ucfirst(strtolower($firstName));
-        $role = strtoupper($role);
+        $id = (int)$autorArray['id'];
+        $lastName = strtoupper($autorArray['lastName']);
+        $firstName = ucfirst(strtolower($autorArray['firstName']));
+        $roleAdmin = strtoupper($autorArray['roleAdmin']);
 
         $query = "UPDATE autor SET pseudo = :pseudo, email = :email, last_name = :lastName, first_name = :firstName, role_admin = :roleAdmin ";
-        if($pwd) $query .= ", pwd = :pwd";
+        if ($autorArray['pwd']) $query .= ", pwd = :pwd";
         $query .= " WHERE id = :id";
 
-		$req = $bdd->prepare($query);
-        $req->bindValue('pseudo', $pseudo, PDO::PARAM_STR);
-        $req->bindValue('email', $email, PDO::PARAM_STR);
+        $req = $bdd->prepare($query);
+        $req->bindValue('pseudo', $autorArray['pseudo'], PDO::PARAM_STR);
+        $req->bindValue('email', $autorArray['email'], PDO::PARAM_STR);
         $req->bindValue('lastName', $lastName, PDO::PARAM_STR);
         $req->bindValue('firstName', $firstName, PDO::PARAM_STR);
-        if($pwd) {
-            $req->bindValue('pwd', password_hash($pwd, PASSWORD_DEFAULT), PDO::PARAM_STR);
+        if ($autorArray['pwd']) {
+            $req->bindValue('pwd', password_hash($autorArray['pwd'], PASSWORD_DEFAULT), PDO::PARAM_STR);
         }
-        $req->bindValue('roleAdmin', $role, PDO::PARAM_STR);
-		$req->bindValue('id', $id, PDO::PARAM_INT);
+        $req->bindValue('roleAdmin', $roleAdmin, PDO::PARAM_STR);
+        $req->bindValue('id', $id, PDO::PARAM_INT);
         $req->execute();
     }
 
