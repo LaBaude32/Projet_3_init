@@ -5,7 +5,7 @@
 				<div class="jumbotron text-center">
 					<a href="index.php">Accueil</a>
 					-
-					<a href="index.php?action=connectionFrom">Adminstration</a>
+					<a href="index.php?action=connectionFrom">Administration</a>
 					-
 					<a href="index.php?action=deconnection">Deconnection</a>
 				</div>

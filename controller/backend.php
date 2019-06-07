@@ -3,7 +3,6 @@ class Backend
 {
     public function actionBackend()
     {
-
         $PostManager = new PostManager();
         $posts = $PostManager->findPublished();
 
@@ -136,7 +135,6 @@ class Backend
             $autor = new Autor();
         }
 
-
         include(VIEW . 'backend/editAutor.php');
     }
 
@@ -144,8 +142,7 @@ class Backend
     {
         if (isset($_POST['id']) && isset($_POST['email']) && isset($_POST['lastName']) && isset($_POST['firstName']) && isset($_POST['pseudo']) && isset($_POST['role'])) {
 
-
-            // vérification de s champs et si echec creation d'un tableau error et revoie vers la vue edit
+            // vérification des champs et si echec creation d'un tableau error et revoie vers la vue edit
 
             // si submit && pas d'erreur
 
