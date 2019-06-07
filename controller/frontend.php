@@ -53,7 +53,7 @@ class Frontend
             if(password_verify($_POST['pwd'], $autor->getPwd()) && $_POST['email'] == $autor->getEmail()){
                 $_SESSION['log'] = 1;
                 $_SESSION['pseudo'] = $autor->getPseudo();
-                $_SESSION['role'] = $autor->getRole();
+                $_SESSION['role'] = $autor->getRoleAdmin();
                 header('Location:index.php?action=admin');
             }else{
                 include(VIEW . '403.php');

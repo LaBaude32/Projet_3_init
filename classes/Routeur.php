@@ -23,7 +23,7 @@ class Routeur
         'validateComment' => array('controller' => 'backend', 'method' => 'actionValidateComment', 'roles' => array('ADMIN', 'MANAGER')),
         'deleteComment' => array('controller' => 'backend', 'method' => 'actionDeleteComment', 'roles' => array('ADMIN', 'MANAGER')),
         'editChapter' => array('controller' => 'backend', 'method' => 'actionEditChapter', 'roles' => array('ADMIN', 'MANAGER')),
-        'publishChapter' => array('controller' => 'backend', 'method' => 'actionPublishChapter', 'roles' => array('ADMIN', 'MANAGER')),
+        'publishChapter' => array('controller' => 'backend', 'method' => 'actionPublishChapter', 'roles' => array('ADMIN')),
         'saveDraft' => array('controller' => 'backend', 'method' => 'actionSaveDraft', 'roles' => array('ADMIN', 'MANAGER')),
         'createDraft' => array('controller' => 'backend', 'method' => 'actionCreateDraft', 'roles' => array('ADMIN', 'MANAGER')),
         'saveNewDraft' => array('controller' => 'backend', 'method' => 'actionSaveNewDraft', 'roles' => array('ADMIN', 'MANAGER')),
@@ -34,6 +34,7 @@ class Routeur
         'displayAutor' => array('controller' => 'backend', 'method' => 'actionDisplayAutor', 'roles' => array('ADMIN')),
         'editAutor' => array('controller' => 'backend', 'method' => 'actionEditAutor', 'roles' => array('ADMIN')),
         'updateAutor' => array('controller' => 'backend', 'method' => 'actionUpdateAutor', 'roles' => array('ADMIN')),
+        'deleteAutor' => array('controller' => 'backend', 'method' => 'actionDeleteAutor', 'roles' => array('ADMIN')),
     );
 
     public function __construct($action)

@@ -23,6 +23,7 @@
             </div>
         <?php endforeach; ?>
     </div>
+    <a href="index.php?action=editAutor" class="btn btn-success mt-5">Créer un administrateur</a>
 </div>
 
 <?php $content = ob_get_clean(); ?>

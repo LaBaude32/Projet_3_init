@@ -7,7 +7,7 @@
     </div>
 
     <form method="post" action="index.php?action=updateAutor">
-        <input type="hiddden" class="form-control" name="id" value="<?= $autor->getId(); ?>">
+        <input type="hidden" class="form-control" name="id" value="<?= $autor->getId(); ?>">
         <div class="form-group">
             <label for="exampleInputEmail1">Adresse Email</label>
             <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Entrez votre email" value="<?= $autor->getEmail(); ?>">
@@ -29,7 +29,7 @@
             <label for="exampleInputText1">Pseudo</label>
             <input class="form-control" type="text" name="pseudo" placeholder="Pseudo" value="<?= $autor->getPseudo(); ?>">
         </div>
-        <p>Quel rôle souhaitez-vous donner au nouvel administrateur ?</p>
+        <p>Quel rôle souhaitez-vous donner à l'administrateur ?</p>
         <div class="form-check">
             <input class="form-check-input" type="radio" name="role" value="ADMIN" <?= $autor->showCheckedValue('ADMIN') ?>>
             <label class="form-check-label" for="exampleRadios1">

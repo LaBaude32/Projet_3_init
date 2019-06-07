@@ -56,8 +56,7 @@ class AutorManager extends BddManager
         $firstName = ucfirst(strtolower($firstName));
         $role = strtoupper($role);
 
-        $query = "INSERT INTO autor pseudo = :pseudo, email = :email, last_name = :lastName, first_name = :firstName, role_admin = :roleAdmin, pwd = :pwd ";
-
+        $query = "INSERT INTO autor(pseudo, email, last_name, first_name, role_admin, pwd) VALUES(:pseudo, :email, :lastName, :firstName, :roleAdmin, :pwd)";
         $req = $bdd->prepare($query);
         $req->bindValue('pseudo', $pseudo, PDO::PARAM_STR);
         $req->bindValue('email', $email, PDO::PARAM_STR);
