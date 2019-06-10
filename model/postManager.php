@@ -17,7 +17,6 @@ class PostManager extends BddManager
 			$posts[] = $post; //tableau d'objets
 
 		}
-		//echo "<pre>"; var_dump($posts); die;
 		return $posts;
 	}
 
@@ -37,7 +36,6 @@ class PostManager extends BddManager
 			$posts[] = $post; //tableau d'objets
 
 		}
-		//echo "<pre>"; var_dump($posts); die;
 		return $posts;
 	}
 
@@ -70,14 +68,12 @@ class PostManager extends BddManager
 
 			$posts[] = $post; //tableau d'objets
 		}
-		//echo "<pre>"; var_dump($posts); die;
 		return $posts;
 	}
 
 	public function publishChapter($id)
 	{
 		$id = (int)$id;
-		//var_dump($id); die;
 		$bdd =$this->getBdd();
 		$req = $bdd->prepare('UPDATE post SET is_draft = :isDraft, saved_at = NOW(), published_at = NOW() WHERE id= :id');
 		$req->bindValue('isDraft', 0, PDO::PARAM_INT);
@@ -89,7 +85,6 @@ class PostManager extends BddManager
 	public function saveDraft($id, $content)
 	{
 		$id = (int)$id;
-		//var_dump($id); die;
 		$bdd =$this->getBdd();
 		$req = $bdd->prepare('UPDATE post SET content = :content, saved_at = NOW() WHERE id= :id');
 		$req->bindValue('content', $content, PDO::PARAM_STR);
