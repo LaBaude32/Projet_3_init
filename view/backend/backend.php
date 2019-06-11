@@ -5,7 +5,7 @@
         <h2>Billet simple pour l'Alsaka</h2>
     </div>
     <div>
-        <a href="index.php?action=createDraft" class="justify-content-end btn btn-info">Créer un nouveau chapitre</a>
+        <a href="index.php?action=editPost" class="justify-content-end btn btn-info">Créer un nouveau chapitre</a>
     </div>
 
     <!-- Commentaires -->
@@ -39,7 +39,7 @@
                     <div class="d-flex w-100 justify-content-between">
                         <p class="mb-1"><?= $draft->getTitle(); ?></p>
                         <div>
-                            <a href="index.php?id=<?= $draft->getId(); ?>&amp;action=editChapter" class="justify-content-end btn btn-secondary">Modifier</a>
+                            <a href="index.php?id=<?= $draft->getId(); ?>&amp;action=editPost" class="justify-content-end btn btn-secondary">Modifier</a>
                         </div>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                     <p class="mb-1"><?= $post->getTitle(); ?></p>
                     <div>
                         <a href="index.php?id=<?= $post->getId(); ?>&amp;action=chapter" class="justify-content-end btn btn-primary">Visualiser</a>
-                        <a href="index.php?id=<?= $post->getId(); ?>&amp;action=editChapter" class="justify-content-end btn btn-warning">Modifier</a>
+                        <a href="index.php?id=<?= $post->getId(); ?>&amp;action=editPost" class="justify-content-end btn btn-warning">Modifier</a>
                     </div>
                 </div>
             </div>

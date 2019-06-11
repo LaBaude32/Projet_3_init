@@ -15,7 +15,6 @@ class PostManager extends BddManager
 			$post->hydrate($row);
 
 			$posts[] = $post; //tableau d'objets
-
 		}
 		return $posts;
 	}
@@ -34,7 +33,6 @@ class PostManager extends BddManager
 			$post->hydrate($row);
 
 			$posts[] = $post; //tableau d'objets
-
 		}
 		return $posts;
 	}
@@ -71,36 +69,51 @@ class PostManager extends BddManager
 		return $posts;
 	}
 
-	public function publishChapter($id)
+	public function save($postArray)
 	{
-		$id = (int)$id;
-		$bdd =$this->getBdd();
-		$req = $bdd->prepare('UPDATE post SET is_draft = :isDraft, saved_at = NOW(), published_at = NOW() WHERE id= :id');
-		$req->bindValue('isDraft', 0, PDO::PARAM_INT);
+		if ($postArray['id'] == null) {
+			$this->insertBdd($postArray);
+		} else {
+			$this->update($postArray);
+		}
+	}
+
+	public function update($postArray)
+	{
+		$id = (int)$postArray['id'];
+		$isDraft = (int)$postArray['isDraft'];
+
+		$bdd = $this->getBdd();
+		if (!$isDraft) {
+			$query = "UPDATE post SET autor_id = :autorId, title = :title, is_draft = :isDraft, content = :content, saved_at = NOW(), published_at = NOW() WHERE id= :id";
+		} else {
+			$query = "UPDATE post SET autor_id = :autorId, title = :title, is_draft = :isDraft, content = :content, saved_at = NOW() WHERE id= :id";
+		}
+		$req = $bdd->prepare($query);
+		$req->bindValue('autorId', $postArray['autorId'], PDO::PARAM_INT);
+		$req->bindValue('title', $postArray['title'], PDO::PARAM_STR);
+		$req->bindValue('content', $postArray['content'], PDO::PARAM_STR);
+		$req->bindValue('isDraft', $isDraft, PDO::PARAM_BOOL);
 		$req->bindValue('id', $id, PDO::PARAM_INT);
 
 		$req->execute();
 	}
 
-	public function saveDraft($id, $content)
+	public function insertBdd($postArray)
 	{
-		$id = (int)$id;
-		$bdd =$this->getBdd();
-		$req = $bdd->prepare('UPDATE post SET content = :content, saved_at = NOW() WHERE id= :id');
-		$req->bindValue('content', $content, PDO::PARAM_STR);
-		$req->bindValue('id', $id, PDO::PARAM_STR);
+		$isDraft = (int)$postArray['isDraft'];
 
-		$req->execute();
-	}
-
-	public function createDraft($title, $content, $isDraft)
-	{
-		$bdd =$this->getBdd();
-		$req = $bdd->prepare('INSERT INTO post(autor_id, title, content, created_at, saved_at, is_draft, published_at) VALUES(:autorId, :title, :content, NOW(), NOW(), :isDraft, NOW())');
-		$req->bindValue('autorId', 1, PDO::PARAM_INT);
-		$req->bindValue('title', $_POST['title'], PDO::PARAM_STR);
-		$req->bindValue('content', $_POST['content'], PDO::PARAM_STR);
-		$req->bindValue('isDraft', $_POST['isDraft'], PDO::PARAM_BOOL);
+		$bdd = $this->getBdd();
+		if (!$isDraft) {
+			$query = "INSERT INTO post(autor_id, title, content, created_at, saved_at, is_draft, published_at) VALUES(:autorId, :title, :content, NOW(), NOW(), :isDraft, NOW())";
+		} else {
+			$query = "INSERT INTO post(autor_id, title, content, created_at, saved_at, is_draft) VALUES(:autorId, :title, :content, NOW(), NOW(), :isDraft)";
+		}
+		$req = $bdd->prepare($query);
+		$req->bindValue('autorId', $postArray['autorId'], PDO::PARAM_INT);
+		$req->bindValue('title', $postArray['title'], PDO::PARAM_STR);
+		$req->bindValue('content', $postArray['content'], PDO::PARAM_STR);
+		$req->bindValue('isDraft', $isDraft, PDO::PARAM_BOOL);
 
 		$req->execute();
 	}

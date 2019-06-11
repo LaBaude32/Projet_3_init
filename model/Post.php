@@ -166,4 +166,11 @@ class Post
     {
        $this->isDraft = $isDraft;
     }
+
+    public function showCheckedValue($value)
+    {
+        if ($this->isDraft == $value) {
+            return 'checked';
+        }
+    }
 }

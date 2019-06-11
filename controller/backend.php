@@ -37,15 +37,39 @@ class Backend
         }
     }
 
-    public function actionEditChapter()
+    public function actionEditPost()
     {
         if (isset($_GET['id']) && $_GET['id'] > 0) {
+            $id = $_GET['id'];
             $PostManager = new PostManager();
-            $post = $PostManager->findOneById($_GET['id']);
-            $ID = $_GET['id'];
-
-            include(VIEW . 'backend/chapterEditing.php');
+            $post = $PostManager->findOneById($id);
+        }else {
+            $post = new Post();
         }
+
+        include(VIEW . 'backend/createPost.php');
+    }
+
+    public function actionUpdatePost()
+    {
+        var_dump($_POST);
+        if (isset($_POST['id']) && isset($_POST['title']) && isset($_POST['content']) && isset($_POST['isDraft'])) {
+
+            $postArray = array(
+                'id' => $_POST['id'],
+                'title' => $_POST['title'],
+                'content' => $_POST['content'],
+                'isDraft' => $_POST['isDraft'],
+                'autorId' => $_SESSION['idAdmin'],
+            );
+
+            $PostManager = new PostManager();
+            $PostManager->save($postArray);
+
+            header('Location:index.php?action=admin');
+
+        }
+        echo 'echec';
     }
 
     public function actionPublishChapter()
@@ -71,11 +95,6 @@ class Backend
             $Backend = new Backend();
             $Backend->actionEditChapter();
         }
-    }
-
-    public function actionCreateDraft()
-    {
-        include(VIEW . 'backend/createChapter.php');
     }
 
     public function actionSaveNewDraft()
@@ -125,7 +144,7 @@ class Backend
         header('Location:index.php?action=managerAutors');
     }
 
-    public function actionEditAutor() // toutes les edit/create passe par ce controller, la création étant un cas particulier
+    public function actionEditAutor() // toutes les edit/create passe par ce controller, la crÃ©ation Ã©tant un cas particulier
     {
         if (isset($_GET['id']) && $_GET['id'] >= 0) {
             $id = $_GET['id'];
@@ -142,7 +161,7 @@ class Backend
     {
         if (isset($_POST['id']) && isset($_POST['email']) && isset($_POST['lastName']) && isset($_POST['firstName']) && isset($_POST['pseudo']) && isset($_POST['role'])) {
 
-            // vérification des champs et si echec creation d'un tableau error et revoie vers la vue edit
+            // vÃ©rification des champs et si echec creation d'un tableau error et revoie vers la vue edit
 
             // si submit && pas d'erreur
 
@@ -157,7 +176,7 @@ class Backend
             );
 
             $AutorManager = new AutorManager();
-            $autor = $AutorManager->save($autorArray);
+            $AutorManager->save($autorArray);
 
             header('Location:index.php?action=managerAutors');
         }

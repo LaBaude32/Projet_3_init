@@ -54,6 +54,7 @@ class Frontend
                 $_SESSION['log'] = 1;
                 $_SESSION['pseudo'] = $autor->getPseudo();
                 $_SESSION['role'] = $autor->getRoleAdmin();
+                $_SESSION['idAdmin'] = $autor->getId();
                 header('Location:index.php?action=admin');
             }else{
                 include(VIEW . '403.php');
