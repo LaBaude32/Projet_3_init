@@ -117,4 +117,14 @@ class PostManager extends BddManager
 
 		$req->execute();
 	}
+
+	public function delete($id)
+	{
+		$id = (int)$id;
+		$bdd = $this->getBdd();
+		$req = $bdd->prepare('DELETE FROM post WHERE id= :id');
+		$req->bindValue('id', $id, PDO::PARAM_INT);
+
+		$req->execute();
+	}
 }

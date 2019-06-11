@@ -40,6 +40,7 @@
                         <p class="mb-1"><?= $draft->getTitle(); ?></p>
                         <div>
                             <a href="index.php?id=<?= $draft->getId(); ?>&amp;action=editPost" class="justify-content-end btn btn-secondary">Modifier</a>
+                            <a href="index.php?id=<?= $draft->getId(); ?>&amp;action=deleteDraft" class="justify-content-end btn btn-danger">Supprimer</a>
                         </div>
                     </div>
                 </div>

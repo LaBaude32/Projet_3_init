@@ -43,7 +43,7 @@ class Backend
             $id = $_GET['id'];
             $PostManager = new PostManager();
             $post = $PostManager->findOneById($id);
-        }else {
+        } else {
             $post = new Post();
         }
 
@@ -67,44 +67,21 @@ class Backend
             $PostManager->save($postArray);
 
             header('Location:index.php?action=admin');
-
-        }
-        echo 'echec';
-    }
-
-    public function actionPublishChapter()
-    {
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
-            $PostManager = new PostManager();
-            $PostManager->publishChapter($_GET['id']);
-
-            $Frontend = new Frontend();
-            $Frontend->actionChapter();
-
-            header('Location:index.php'); //location:ROOT
         }
     }
 
-    public function actionSaveDraft()
+    public function actionDeleteDraft()
     {
-        if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_POST['postContent'])) {
+        if (isset($_GET['id']) && $_GET['id'] >= 0) {
+            $id = $_GET['id'];
 
             $PostManager = new PostManager();
-            $PostManager->saveDraft($_GET['id'], $_POST['postContent']);
+            $post = $PostManager->findOneById($id);
+            if ($post->getIsDraft() == 1) {
+                $PostManager->delete($id);
+            }
 
-            $Backend = new Backend();
-            $Backend->actionEditChapter();
-        }
-    }
-
-    public function actionSaveNewDraft()
-    {
-        if (isset($_POST['title']) && isset($_POST['content']) && isset($_POST['isDraft'])) {
-
-            $PostManager = new PostManager();
-            $PostManager->createDraft($_POST['title'], $_POST['content'], $_POST['isDraft']);
-
-            header('Location:index.php');
+            header('Location:index.php?action=admin');
         }
     }
 
