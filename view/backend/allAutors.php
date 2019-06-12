@@ -24,7 +24,7 @@
         <?php endforeach; ?>
     </div>
 
-    <a href="index.php?action=editAutor" class="btn btn-success mt-5 justify-content-end">Créer un administrateur</a>
+    <a href="index.php?action=editAutor" class="btn btn-success mt-5 justify-content-end">CrÃ©er un administrateur</a>
     <a href="index.php?action=admin" class="btn btn-info mt-5 justify-content-end">Retour</a>
 </div>
 
