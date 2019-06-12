@@ -13,7 +13,8 @@ class MyAutoload
 
         define('ROOT', $_SERVER['DOCUMENT_ROOT'] . '/' . $folder . '/');
 
-        define('HOST', $host . '/');
+        // define('HOST', $host . '/');
+        define('HOST', '');
 
         define('VIEW', ROOT . 'view/');
         define('CONTROLLER', ROOT . 'controller/');
