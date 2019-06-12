@@ -21,8 +21,7 @@ class Backend
             $CommentsManager = new CommentsManager();
             $comments = $CommentsManager->validateComment($_GET['id']);
 
-            $Backend = new Backend();
-            $Backend->actionBackend();
+            header('Location:index.php?action=admin');
         }
     }
 
@@ -32,8 +31,7 @@ class Backend
             $CommentsManager = new CommentsManager();
             $comments = $CommentsManager->deleteComment($_GET['id']);
 
-            $Backend = new Backend();
-            $Backend->actionBackend();
+            header('Location:index.php?action=admin');
         }
     }
 
