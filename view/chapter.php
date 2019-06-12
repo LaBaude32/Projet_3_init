@@ -33,7 +33,7 @@
         <?php foreach ($comments as $comment):?>
             <div class="list-group-item list-group-item-action">
                 <div class="d-flex w-100 text-right">
-                    <small>PubliÃ© le <?= $comment->getPublishedAt()->format('d \/ m \/ Y'); ?></small>
+                    <small>Publié le <?= $comment->getPublishedAt()->format('d \/ m \/ Y'); ?></small>
                 </div>
                 <p class="mb-1"><?= $comment->getContent(); ?></p>
                 <small><?= $comment->getPseudo(); ?></small>
