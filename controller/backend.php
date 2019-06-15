@@ -6,8 +6,8 @@ class Backend
         $PostManager = new PostManager();
         $posts = $PostManager->findPublished();
 
-        $BackendManager = new BackendManager();
-        $comments = $BackendManager->returnCommentsToValidate();
+        $CommentsManager = new CommentsManager();
+        $comments = $CommentsManager->returnCommentsToValidate();
 
         $PostManager = new PostManager();
         $drafts = $PostManager->findDrafts();

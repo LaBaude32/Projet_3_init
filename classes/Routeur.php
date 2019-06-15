@@ -15,6 +15,7 @@ class Routeur
         'home' => array('controller' => 'frontend', 'method' => 'actionHome', 'roles' => array('ADMIN', 'MANAGER', 'VISITOR')),
         'chapter' => array('controller' => 'frontend', 'method' => 'actionChapter', 'roles' => array('ADMIN', 'MANAGER', 'VISITOR')),
         'addComment' => array('controller' => 'frontend', 'method' => 'actionCommentAdded', 'roles' => array('ADMIN', 'MANAGER', 'VISITOR')),
+        'reportComment' => array('controller' => 'frontend', 'method' => 'actionReportComment', 'roles' => array('ADMIN', 'MANAGER', 'VISITOR')),
         'connectionFrom' => array('controller' => 'frontend', 'method' => 'actionConnectionForm', 'roles' => array('ADMIN', 'MANAGER', 'VISITOR')),
         'login' => array('controller' => 'frontend', 'method' => 'actionLogin', 'roles' => array('ADMIN', 'MANAGER', 'VISITOR')),
 

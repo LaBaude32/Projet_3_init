@@ -30,12 +30,19 @@
         <!-- affichage des commentaires -->
         <div class="list-group">
             <?php foreach ($comments as $comment) : ?>
-                <div class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 text-right">
-                        <small>Publié le <?= $comment->getPublishedAt()->format('d \/ m \/ Y'); ?></small>
+                <div class="row align-items-center">
+                    <div class="col-10">
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 text-right">
+                                <small>Publié le <?= $comment->getPublishedAt()->format('d \/ m \/ Y'); ?></small>
+                            </div>
+                            <p class="mb-1 justify-content-between"><?= $comment->getContent(); ?></p>
+                            <small><?= $comment->getPseudo(); ?></small>
+                        </div>
                     </div>
-                    <p class="mb-1"><?= $comment->getContent(); ?></p>
-                    <small><?= $comment->getPseudo(); ?></small>
+                    <div class="col-2">
+                        <a href="index.php?id=<?= $comment->getId(); ?>&amp;action=reportComment" class="justify-content-end btn btn-secondary">Signaler</a>
+                    </div>
                 </div>
             <?php endforeach; ?>
         </div>

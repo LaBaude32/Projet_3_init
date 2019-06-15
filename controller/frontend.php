@@ -33,6 +33,15 @@ class Frontend
         }
     }
 
+    public function actionReportComment()
+    {
+        if (isset($_GET['id']) && $_GET['id'] > 0) {
+            $CommentsManager = new CommentsManager();
+            $CommentsManager->reportComment($_GET['id']);
+            header('Location:index.php');
+        }
+    }
+
     public function actionConnectionForm()
     {
         if (!isset($_SESSION['log'])) {
