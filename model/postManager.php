@@ -85,9 +85,9 @@ class PostManager extends BddManager
 
 		$bdd = $this->getBdd();
 		if (!$isDraft) {
-			$query = "UPDATE post SET autor_id = :autorId, title = :title, is_draft = :isDraft, content = :content, saved_at = NOW(), published_at = NOW() WHERE id= :id";
+			$query = "UPDATE post SET autor_id = :autorId, title = :title, is_draft = :isDraft, content = :content, saved_at = NOW(), published_at = NOW(), book_id = :bookId WHERE id= :id";
 		} else {
-			$query = "UPDATE post SET autor_id = :autorId, title = :title, is_draft = :isDraft, content = :content, saved_at = NOW() WHERE id= :id";
+			$query = "UPDATE post SET autor_id = :autorId, title = :title, is_draft = :isDraft, content = :content, saved_at = NOW(), book_id = :bookId WHERE id= :id";
 		}
 		$req = $bdd->prepare($query);
 		$req->bindValue('autorId', $postArray['autorId'], PDO::PARAM_INT);
@@ -95,6 +95,7 @@ class PostManager extends BddManager
 		$req->bindValue('content', $postArray['content'], PDO::PARAM_STR);
 		$req->bindValue('isDraft', $isDraft, PDO::PARAM_BOOL);
 		$req->bindValue('id', $id, PDO::PARAM_INT);
+		$req->bindValue('bookId', 1, PDO::PARAM_INT);
 
 		$req->execute();
 	}
@@ -105,15 +106,16 @@ class PostManager extends BddManager
 
 		$bdd = $this->getBdd();
 		if (!$isDraft) {
-			$query = "INSERT INTO post(autor_id, title, content, created_at, saved_at, is_draft, published_at) VALUES(:autorId, :title, :content, NOW(), NOW(), :isDraft, NOW())";
+			$query = "INSERT INTO post(autor_id, title, content, created_at, saved_at, is_draft, published_at, book_id) VALUES(:autorId, :title, :content, NOW(), NOW(), :isDraft, NOW(), :bookId)";
 		} else {
-			$query = "INSERT INTO post(autor_id, title, content, created_at, saved_at, is_draft) VALUES(:autorId, :title, :content, NOW(), NOW(), :isDraft)";
+			$query = "INSERT INTO post(autor_id, title, content, created_at, saved_at, is_draft, book_id) VALUES(:autorId, :title, :content, NOW(), NOW(), :isDraft, :bookId)";
 		}
 		$req = $bdd->prepare($query);
 		$req->bindValue('autorId', $postArray['autorId'], PDO::PARAM_INT);
 		$req->bindValue('title', $postArray['title'], PDO::PARAM_STR);
 		$req->bindValue('content', $postArray['content'], PDO::PARAM_STR);
 		$req->bindValue('isDraft', $isDraft, PDO::PARAM_BOOL);
+		$req->bindValue('bookId', 1, PDO::PARAM_INT);
 
 		$req->execute();
 	}

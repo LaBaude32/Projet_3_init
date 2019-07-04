@@ -5,6 +5,8 @@ class Frontend
     {
         $PostManager = new PostManager();
         $posts = $PostManager->findPublished();
+        $BookManager = new BookManager();
+        $book = $BookManager->findOneById(1);
         include(VIEW . 'home.php');
     }
 

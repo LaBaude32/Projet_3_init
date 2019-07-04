@@ -59,6 +59,7 @@ class Backend
                 'content' => $_POST['content'],
                 'isDraft' => $_POST['isDraft'],
                 'autorId' => $_SESSION['idAdmin'],
+
             );
 
             $PostManager = new PostManager();

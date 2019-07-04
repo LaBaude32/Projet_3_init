@@ -10,6 +10,7 @@ class Post
     private $publishedAt;
     private $savedAt;
     private $isDraft;
+    private $bookId;
 
 
     public function hydrate($datas) { // array('id' => 5, 'autor_id' => '6) // setAutor_id => setAutorId
@@ -172,5 +173,25 @@ class Post
         if ($this->isDraft == $value) {
             return 'checked';
         }
+    }
+
+    /**
+     * Get the value of bookId
+     */
+    public function getBookId()
+    {
+        return $this->bookId;
+    }
+
+    /**
+     * Set the value of bookId
+     *
+     * @return  self
+     */
+    public function setBookId($bookId)
+    {
+        $this->bookId = $bookId;
+
+        return $this;
     }
 }

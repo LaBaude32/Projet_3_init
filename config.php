@@ -23,7 +23,7 @@ class MyAutoload
         define('CLASSES', ROOT . 'classes/');
 
         define('DBHOST', 'localhost');
-        define('DBNAME', 'projet3');
+        define('DBNAME', 'projet3_2');
         define('DBLOGIN', 'root');
         define('DBPASSWORD', '');
 
