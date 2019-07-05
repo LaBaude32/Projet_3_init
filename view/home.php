@@ -2,7 +2,7 @@
 
 <div class="col-lg-12">
     <div class="jumbotron">
-        <h1><?= $book->getTitle();?></h1>
+        <h1><?= $book->getTitle(); ?></h1>
         <h2> Par Jean Forteroche</h2>
     </div>
     <div>
@@ -10,7 +10,7 @@
     </div>
     <div class="col-12 p-5">
         <h3>Résumé du livre :</h3>
-        <p class="text-justify mt-4"><?= $book->getResume();?></p>
+        <p class="text-justify mt-4"><?= $book->getContent(); ?></p>
     </div>
     <h3>Les chapitres :</h3>
     <div class="list-group mt-4">

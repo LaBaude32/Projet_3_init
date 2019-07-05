@@ -69,6 +69,8 @@
     </div>
     <h3 class="p5 mt-5">Gestion des auteurs</h3>
     <a href="index.php?action=managerAutors" class="btn btn-danger">Voir tout</a>
+    <h3 class="p5 mt-5">Gestion du livre</h3>
+    <a href="index.php?action=managerBook" class="btn btn-danger">Modifier</a>
 </div>
 
 <?php $content = ob_get_clean(); ?>

@@ -34,6 +34,8 @@ class Routeur
         'editAutor' => array('controller' => 'backend', 'method' => 'actionEditAutor', 'roles' => array('ADMIN')),
         'updateAutor' => array('controller' => 'backend', 'method' => 'actionUpdateAutor', 'roles' => array('ADMIN')),
         'deleteAutor' => array('controller' => 'backend', 'method' => 'actionDeleteAutor', 'roles' => array('ADMIN')),
+        'managerBook' => array('controller' => 'backend', 'method' => 'actionManageBook', 'roles' => array('ADMIN')),
+        'updateBook' => array('controller' => 'backend', 'method' => 'actionUpdateBook', 'roles' => array('ADMIN')),
     );
 
     public function __construct($action)

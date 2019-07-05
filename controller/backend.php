@@ -157,4 +157,30 @@ class Backend
             header('Location:index.php?action=managerAutors');
         }
     }
+
+    public function actionManageBook()
+    {
+        $BookManager = new BookManager();
+        $book = $BookManager->findOneById(1);
+        include(VIEW . 'backend/editBook.php');
+    }
+
+    public function actionUpdateBook()
+    {
+        if (isset($_POST['id']) && isset($_POST['title']) && isset($_POST['content'])) {
+
+            $bookArray = array(
+                'id' => $_POST['id'],
+                'title' => $_POST['title'],
+                'content' => $_POST['content']
+            );
+
+            $BookManager = new BookManager();
+            $BookManager->save($bookArray);
+
+            header('Location:index.php?action=admin');
+        } else {
+            var_dump($_POST);
+        }
+    }
 }

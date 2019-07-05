@@ -4,7 +4,7 @@ class Book
 {
     private $id;
     private $title;
-    private $resume;
+    private $content;
 
     public function hydrate($datas)
     { // array('id' => 5, 'autor_id' => '6) // setAutor_id => setAutorId
@@ -63,21 +63,21 @@ class Book
     }
 
     /**
-     * Get the value of resume
+     * Get the value of content
      */
-    public function getResume()
+    public function getContent()
     {
-        return $this->resume;
+        return $this->content;
     }
 
     /**
-     * Set the value of resume
+     * Set the value of content
      *
      * @return  self
      */
-    public function setResume($resume)
+    public function setContent($content)
     {
-        $this->resume = $resume;
+        $this->content = $content;
 
         return $this;
     }
