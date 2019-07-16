@@ -31,7 +31,7 @@ class Frontend
             $postId = $_POST['PostID'];
             $CommentsManager = new CommentsManager();
             $comments = $CommentsManager->addComment($pseudo, $content, $postId);
-            include(VIEW . 'commentAdded.php');
+            header('Location:index.php?id='.$postId.'&action=chapter');
         }
     }
 
