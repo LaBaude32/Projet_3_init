@@ -13,7 +13,7 @@
             <p><input class="form-control" type="text" name="title" placeholder="Titre du livre" value="<?= $book->getTitle(); ?>" /></p>
         </div>
         <div class="form-group">
-            <label for="exampleInputArea1">Résumé du livre</label>
+            <label for="exampleInputArea1">RÃ©sumÃ© du livre</label>
             <textarea name="content"><?= $book->getContent(); ?></textarea>
         </div>
 
