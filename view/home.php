@@ -10,7 +10,7 @@
     </div>
     <div class="col-12 p-5">
         <h3>Résumé du livre :</h3>
-        <p class="text-justify mt-4"><?= $book->getContent(); ?></p>
+        <span class="text-justify mt-4"><?= $book->getContent(); ?></span>
     </div>
     <h3>Les chapitres :</h3>
     <div class="list-group mt-4">

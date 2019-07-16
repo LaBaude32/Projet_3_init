@@ -4,7 +4,7 @@
         <h1>Billet simple pour l'Alaska</h1>
         <h2>Chapitre <?= $post->getTitle(); ?></h2>
     </div>
-    <p> <?= $post->getContent(); ?> </p>
+    <span class="text-justify"> <?= $post->getContent(); ?> </span>
     <blockquote class="blockquote">
         <footer class="blockquote-footer font-italic">Publié le <?= $post->getPublishedAt()->format('d \/ m \/ Y'); ?></footer>
     </blockquote>
