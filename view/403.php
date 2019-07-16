@@ -6,7 +6,7 @@
     </div>
     <p>Vous ne disposez pas des droits pour acceder à cette page.</p>
     <a href="index.php" class="btn btn-primary">retour à l'accueil</a>
-    <a href="index.php?action=connectionFrom" class="btn btn-primary">Connection � l'adminstration</a>
+    <a href="index.php?action=connectionFrom" class="btn btn-primary">Connection à l'adminstration</a>
 </div>
 
 <?php $content = ob_get_clean(); ?>
