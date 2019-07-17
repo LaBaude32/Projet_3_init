@@ -7,7 +7,7 @@
 					-
 					<a href="index.php?action=connectionFrom">Administration</a>
 					-
-					<a href="index.php?action=deconnection">Deconnection</a>
+					<a href="index.php?action=deconnection">Deconnexion</a>
 				</div>
 			</div>
 		</div>

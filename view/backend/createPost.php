@@ -14,7 +14,7 @@
             <input class="form-check-input" type="radio" name="isDraft" value="1" id="true" <?= $post->showCheckedValue('1'); ?> />
             <label class="form-check-label" for="true">Enregistrer en brouillon</label><br />
             <input class="form-check-input" type="radio" name="isDraft" value="0" id="false" <?= $post->showCheckedValue('0'); ?> />
-            <label class="form-check-label" for="false">Publier directement</label><br />
+            <label class="form-check-label" for="false">Publier</label><br />
         </div>
         <button type="submit" class="btn btn-success mt-3">Enregistrer</button>
     </form>

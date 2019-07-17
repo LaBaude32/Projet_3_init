@@ -61,6 +61,8 @@ class Frontend
         if (isset($_POST['email']) && isset($_POST['pwd'])) {
             $AutorManager = new AutorManager;
             $autor = $AutorManager->findOneByEmail($_POST['email']);
+            // $autors = $AutorManager->findAll();
+            // foreach($autors as $autor)
             if (password_verify($_POST['pwd'], $autor->getPwd()) && $_POST['email'] == $autor->getEmail()) {
                 $_SESSION['log'] = 1;
                 $_SESSION['pseudo'] = $autor->getPseudo();
