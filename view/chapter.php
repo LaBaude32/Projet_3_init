@@ -12,8 +12,8 @@
     <a class="btn btn-info" href="index.php" role="button">Retour au sommaire</a>
 
     <p class="display-4 mt-5">Commentaires :</p>
-    <button type="button" class="btn btn-secondary"> Ajouter un commentaire</button>
-    <form method="post" action="index.php?action=addComment">
+    <button id="display-form-comment" type="button" class="btn btn-secondary"> Ajouter un commentaire</button>
+    <form id="form-comment" method="post" action="index.php?action=addComment">
         <p>Ajouter un commentaire :</p>
         <div class="form-group">
             <input class="form-control form-control-lg" name="Pseudo" type="text" placeholder="Pseudo">
@@ -50,4 +50,7 @@
 </div>
 
 <?php $content = ob_get_clean(); ?>
+<script src="<?= HOST; ?>public/Style/JQuery/JQuery.js"></script>
+<script src="<?= HOST; ?>public/Style/chapter.js"></script>
+
 <?php include(VIEW . 'gabarit.php'); ?>
