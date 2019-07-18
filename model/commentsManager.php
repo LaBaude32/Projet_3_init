@@ -8,23 +8,12 @@ class CommentsManager extends BddManager
 
 		$query = 'SELECT * FROM comments';
 
-		/*
-		$query = "SELECT c.*, p.* as chap_title
-		FROM comments c
-		INNER JOIN post p ON c.post_id = p.id
-		WHERE c.post_id = 1";*/
-
-
 		$req = $bdd->query($query);
 		$req->execute();
 		while ($row = $req->fetch(PDO::FETCH_ASSOC)) {
 
-			// object POST
-
 			$comment = new Comment();
 			$comment->hydrate($row);
-
-			//$comment->setPOst($post);
 
 			$comments[] = $comment;
 		}
@@ -58,7 +47,7 @@ class CommentsManager extends BddManager
 				$toReturn[] = $comment;
 			}
 		}
-		return array_reverse($toReturn); //pour les mettre dans l'ordre décroissant
+		return array_reverse($toReturn);
 	}
 
 	public function returnCommentsToValidate()
@@ -70,7 +59,7 @@ class CommentsManager extends BddManager
 				$toReturn[] = $comment;
 			}
 		}
-		return array_reverse($toReturn); //pour les mettre dans l'ordre d?Šcroissant
+		return array_reverse($toReturn);
 	}
 
 	public function addComment($pseudo, $content, $postID)
@@ -86,7 +75,7 @@ class CommentsManager extends BddManager
 
 	public function validateComment($id)
 	{
-		$id = (int)$id;
+		$id = (int) $id;
 		$bdd = $this->getBdd();
 		$req = $bdd->prepare('UPDATE comments SET report = :report WHERE id= :id');
 		$req->bindValue('report', 0, PDO::PARAM_INT);
@@ -97,7 +86,7 @@ class CommentsManager extends BddManager
 
 	public function deleteComment($id)
 	{
-		$id = (int)$id;
+		$id = (int) $id;
 		$bdd = $this->getBdd();
 		$req = $bdd->prepare('DELETE FROM comments WHERE id= :id');
 		$req->bindValue('id', $id, PDO::PARAM_INT);
@@ -107,7 +96,7 @@ class CommentsManager extends BddManager
 
 	public function reportComment($id)
 	{
-		$id = (int)$id;
+		$id = (int) $id;
 		$bdd = $this->getBdd();
 		$req = $bdd->prepare('UPDATE comments SET report = :report WHERE id= :id');
 		$req->bindValue('report', 1, PDO::PARAM_INT);

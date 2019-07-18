@@ -120,7 +120,7 @@ class Backend
         header('Location:index.php?action=managerAutors');
     }
 
-    public function actionEditAutor() // toutes les edit/create passe par ce controller, la crÃ©ation Ã©tant un cas particulier
+    public function actionEditAutor()
     {
         if (isset($_GET['id']) && $_GET['id'] >= 0) {
             $id = $_GET['id'];
@@ -136,10 +136,6 @@ class Backend
     public function actionUpdateAutor()
     {
         if (isset($_POST['id']) && isset($_POST['email']) && isset($_POST['lastName']) && isset($_POST['firstName']) && isset($_POST['pseudo']) && isset($_POST['role'])) {
-
-            // vÃ©rification des champs et si echec creation d'un tableau error et revoie vers la vue edit
-
-            // si submit && pas d'erreur
 
             $autorArray = array(
                 'id' => $_POST['id'],
@@ -179,8 +175,6 @@ class Backend
             $BookManager->save($bookArray);
 
             header('Location:index.php?action=admin');
-        } else {
-            var_dump($_POST);
         }
     }
 }

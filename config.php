@@ -1,6 +1,7 @@
 <?php
-//configuration de l'appli
-
+/**
+ * Class MyAutoload -> configuration de l'application et de l'environnement
+ */
 class MyAutoload
 {
     public static function start()
@@ -13,7 +14,6 @@ class MyAutoload
 
         define('ROOT', $_SERVER['DOCUMENT_ROOT'] . '/' . $folder . '/');
 
-        // define('HOST', $host . '/');
         define('HOST', '');
 
         define('VIEW', ROOT . 'view/');
@@ -42,13 +42,4 @@ class MyAutoload
         }
     }
 }
-
-
-
-//faire une session start
-
-// ajouter tous les dossier
-
 // faire la mm chose pour les public avec HTTP_HOST ==> CSS et URLS
-
-// pour les connections à la BDD faire la mm chose avec DbName DbConfig DbHost dBpassword

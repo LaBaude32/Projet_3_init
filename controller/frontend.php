@@ -31,7 +31,7 @@ class Frontend
             $postId = $_POST['PostID'];
             $CommentsManager = new CommentsManager();
             $comments = $CommentsManager->addComment($pseudo, $content, $postId);
-            header('Location:index.php?id='.$postId.'&action=chapter');
+            header('Location:index.php?id=' . $postId . '&action=chapter');
         }
     }
 
@@ -60,9 +60,11 @@ class Frontend
     {
         if (isset($_POST['email']) && isset($_POST['pwd'])) {
             $AutorManager = new AutorManager;
-            $autor = $AutorManager->findOneByEmail($_POST['email']);
-            // $autors = $AutorManager->findAll();
-            // foreach($autors as $autor)
+            if (!$autor = $AutorManager->findOneByEmail($_POST['email'])) {
+                include(VIEW . '403.php');
+                exit;
+            }
+
             if (password_verify($_POST['pwd'], $autor->getPwd()) && $_POST['email'] == $autor->getEmail()) {
                 $_SESSION['log'] = 1;
                 $_SESSION['pseudo'] = $autor->getPseudo();
@@ -73,20 +75,5 @@ class Frontend
                 include(VIEW . '403.php');
             }
         }
-
-        //1 recuepère le user par son identifiant avec les roles
-        //2 user et le password hashé
-        //3A tu compares le password hashé avec une hash du password tapé
-        //    ex: if(mot de pass bdd = sha1(mot dep asse tapé))
-        //3B passwordverify(mdp en clair tapé, le mdp bdd);
-
-        // password_hash et password_verify
-
-
-        // instancie Session log, session role + les preferences / les config
-        // Alimente les vars de sessions
     }
-
-    //faire une logout -> session_destroy() -> redicrection acceuil
-
 }

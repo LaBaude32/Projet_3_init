@@ -61,7 +61,6 @@ class Routeur
                     $controller = new $controller();
                     $controller->$method();
                 } else {
-                    //echo '403'; // new ErrorPage() -> sho403();
                     include(VIEW . '403.php');
                 }
             } else {
@@ -69,7 +68,7 @@ class Routeur
                 $controller->$method();
             }
         } else {
-            echo '404'; // new ErrorPage() -> sho404();
+            echo '404';
         }
     }
 }

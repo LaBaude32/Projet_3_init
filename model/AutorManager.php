@@ -6,10 +6,12 @@ class AutorManager extends BddManager
     {
         $bdd = $this->getBdd();
 
-        $query = 'SELECT * FROM autor WHERE email=\'' . $email . '\'';
-        $req = $bdd->query($query);
+        $query = 'SELECT * FROM autor WHERE email=:email';
+        $req = $bdd->prepare($query);
+        $req->bindValue('email', $email);
         $req->execute();
-        $row = $req->fetch(PDO::FETCH_ASSOC);
+        if(!$row = $req->fetch(PDO::FETCH_ASSOC)) return null;
+
         $autor = new Autor();
         $autor->hydrate($row);
         return $autor;
@@ -41,10 +43,9 @@ class AutorManager extends BddManager
             $autor = new Autor();
             $autor->hydrate($row);
 
-            $autors[] = $autor; //tableau d'objets
+            $autors[] = $autor;
 
         }
-        //echo "<pre>"; var_dump($autors); die;
         return $autors;
     }
 

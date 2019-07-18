@@ -14,7 +14,7 @@ class PostManager extends BddManager
 			$post = new Post();
 			$post->hydrate($row);
 
-			$posts[] = $post; //tableau d'objets
+			$posts[] = $post;
 		}
 		return $posts;
 	}
@@ -32,7 +32,7 @@ class PostManager extends BddManager
 			$post = new Post();
 			$post->hydrate($row);
 
-			$posts[] = $post; //tableau d'objets
+			$posts[] = $post;
 		}
 		return $posts;
 	}
@@ -64,7 +64,7 @@ class PostManager extends BddManager
 			$post = new Post();
 			$post->hydrate($row);
 
-			$posts[] = $post; //tableau d'objets
+			$posts[] = $post;
 		}
 		return $posts;
 	}
@@ -80,8 +80,8 @@ class PostManager extends BddManager
 
 	public function update($postArray)
 	{
-		$id = (int)$postArray['id'];
-		$isDraft = (int)$postArray['isDraft'];
+		$id = (int) $postArray['id'];
+		$isDraft = (int) $postArray['isDraft'];
 
 		$bdd = $this->getBdd();
 		if (!$isDraft) {
@@ -102,7 +102,7 @@ class PostManager extends BddManager
 
 	public function insertBdd($postArray)
 	{
-		$isDraft = (int)$postArray['isDraft'];
+		$isDraft = (int) $postArray['isDraft'];
 
 		$bdd = $this->getBdd();
 		if (!$isDraft) {
@@ -122,7 +122,7 @@ class PostManager extends BddManager
 
 	public function delete($id)
 	{
-		$id = (int)$id;
+		$id = (int) $id;
 		$bdd = $this->getBdd();
 		$req = $bdd->prepare('DELETE FROM post WHERE id= :id');
 		$req->bindValue('id', $id, PDO::PARAM_INT);

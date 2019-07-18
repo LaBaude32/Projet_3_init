@@ -9,10 +9,10 @@ class Autor
     private $pwd;
     private $roleAdmin;
 
-    public function hydrate($datas) { // array('id' => 5, 'autor_id' => '6) // setAutor_id => setAutorId
+    public function hydrate($datas) {
         foreach($datas as $field => $value) {
 
-            $elements = explode('_', $field); // array(0 => 'autor', 1 => 'id');
+            $elements = explode('_', $field);
 
             $method = "set";
             foreach($elements as $e){
